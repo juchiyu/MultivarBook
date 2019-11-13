@@ -13,6 +13,12 @@ This book provides an introduction of simple and advanced multivariate analysis.
 
 3. When you are done, you can submit a pull request to integrate your work with the latest version.
 
-## 
+### Here are some issues listed out to start with:
+
+-[] Set up the bookdown and outlines
+
+-[] Write-up for PCA
+
+-[] Example data from PCA
 
 
