@@ -31,10 +31,51 @@ We are using `ExPosition` by Dr. Derek Beaton to run the analysis and functions 
 
 ### Plan for this Brainhack:
 
-[] Set up the bookdown and outlines
+**Day 1**
 
-[] Write-up for PCA
++ 11:00 am - 12:30 pm:
 
-[] Example data from PCA
+  - Meet up
+  
+  - General discussion about the outline
+  
+  - Go through the materials I have on github
+  
+  - Find things you can work on
+  
++ 3:30 pm - 5:00 pm:
 
+  - Meet new people
+  
+  - General discussion about the outline (if needed)
+  
+  - Work in two groups
+  
+    - People that **are not** familiar with PCA: check the writing, give feedbacks on figures...
+    
+    - People that **are** familiar with PCA: Try to create plots and .rmd script that we want to show
+    
+ 
+**Day 2**
 
++ 10:30 am - 12:30 pm:
+
+  - Meet up
+  
+  - General discussion about progress on Day 1
+  
+  - Work in two groups
+  
+    - People that **are not** familiar with PCA: give feedbacks on the explanations
+    
+      - (11:30 cram course for `epPCA` and `PTCA4CATA`)
+    
+    - People that **are** familiar with PCA: Try to create plots and .rmd script that we want to show
+  
++ 1:30 pm - 2:45 pm:
+
+  - Finalize what we are left with
+  
++ 2:45 pm - 3:00 pm:
+
+  - Create presentation
