@@ -41,6 +41,8 @@ We are using `ExPosition` by Dr. Derek Beaton to run the analysis and functions 
   
   - Go through the materials I have on github
   
+  - How we can do this
+  
   - Find things you can work on
   
 + 3:30 pm - 5:00 pm:
@@ -51,9 +53,19 @@ We are using `ExPosition` by Dr. Derek Beaton to run the analysis and functions 
   
   - Work in two groups
   
-    - People that **are not** familiar with PCA: check the writing, give feedbacks on figures...
+    - People that **are not** familiar with PCA: 
     
-    - People that **are** familiar with PCA: Try to create plots and .rmd script that we want to show
+      - check the writing
+      
+      - give feedbacks on figures
+      
+      - other
+    
+    - People that **are** familiar with PCA: 
+    
+      - Plots we want to show
+      
+      - Rmd script we want to show 
     
  
 **Day 2**
@@ -66,11 +78,15 @@ We are using `ExPosition` by Dr. Derek Beaton to run the analysis and functions 
   
   - Work in two groups
   
-    - People that **are not** familiar with PCA: give feedbacks on the explanations
+    - People that **are not** familiar with PCA: 
+    
+      - give feedbacks on the explanations
     
       - (11:30 cram course for `epPCA` and `PTCA4CATA`)
     
-    - People that **are** familiar with PCA: Try to create plots and .rmd script that we want to show
+    - People that **are** familiar with PCA: 
+    
+      - Try to create plots and .rmd script that we want to show
   
 + 1:30 pm - 2:45 pm:
 
