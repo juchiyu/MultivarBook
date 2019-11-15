@@ -82,7 +82,7 @@ We are using `ExPosition` by Dr. Derek Beaton to run the analysis and functions 
     
       - give feedbacks on the explanations
     
-      - (11:30 cram course for `epPCA` and `PTCA4CATA`)
+      - (11:30 crash course for `epPCA` and `PTCA4CATA`)
     
     - People that **are** familiar with PCA: 
     
