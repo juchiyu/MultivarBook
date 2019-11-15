@@ -5,20 +5,36 @@
 ## Goals
 This book provides an introduction of simple and advanced multivariate analysis. The materials are inspired by the Advanced Research Method class by Dr. Hervé Abdi at the University of Texas at Dallas.
 
+We are using `ExPosition` by Dr. Derek Beaton to run the analysis and functions in `PTCA4CATA` by Dr. Hervé Abdi to create plots from the results.
+
 ## How to contribute?
 
 1. Please check out the issues by clicking the tabs on the top of this github page and pick one to contribute.
+
+  + If you are **not** familiar with multivariate analysis:
+      
+    + You can reply to issue #1 and share with me what you are expecting to see if you are hoping to use PCA and are looking for a tutorial of it.
+      
+    + You can help me proof-read the descriptions of PCA and give feedbacks.
+      
+  + If you are familiar with multivariate analysis:
+  
+    + You can reply to issue #2 and share with me what in general (or usually) are you looking for when you turn to a tutorial for help.
+    
+    + You can help us make images and add descriptions for them.
+    
+    + You can help us add instructions for how to use the functions to do the analysis.
 
 2. You can fork the repository and work on the bookdown on your own github account.
 
 3. When you are done, you can submit a pull request to integrate your work with the latest version.
 
-### Here are some issues listed out to start with:
+### Plan for this Brainhack:
 
--[] Set up the bookdown and outlines
+[] Set up the bookdown and outlines
 
--[] Write-up for PCA
+[] Write-up for PCA
 
--[] Example data from PCA
+[] Example data from PCA
 
 
