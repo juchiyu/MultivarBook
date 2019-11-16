@@ -25,7 +25,7 @@
 <meta name="author" content="Ju-Chi Yu">
 
 
-<meta name="date" content="2019-11-15">
+<meta name="date" content="2019-11-16">
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -158,6 +158,106 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="pca_intro" class="section level1">
 <h1><span class="header-section-number">1</span> What is Principal Component Analysis (PCA)?</h1>
 
+<p>Multi-table techniques originate from the multivariate techniques that analyze a single table (i.e., PCA) and a pair of tables (i.e., PLSC, CCA and RDA). These techniques search for a linear combination (i.e., a mixture) of the original variables that gives the maximum amount of information. However, the information to be maximized is defined differently for different techniques, and, therefore, these techniques can be expressed as different optimization problems, which can usually be solved by a gradient descent algorithm that iteratively searches for the solution (i.e., the coefficients of this linear combination). Specifically, in each , the gradient descent algorithm generates a new set of numbers that gives more information about the data than the previously generated set of numbers, and this procedure repeats for several iterations until an optimum is reached. Interestingly, for most multivariate techniques, this optimum set of coefficients can also be found in one step by the SVD.</p>
+
+<p>The SVD is a maximization problem (i.e., an optimization problem that searches for a maximum) that works on an <span class="math inline">\(\times\)</span> rectangular matrix . The SVD searches for two vectors of coefficients denoted  and  which maximize the  <span class="math inline">\(\delta\)</span> computed as:
+<span class="math display">\[\begin{equation}\label{Maximization_SVD}
+\delta = \argmax_{\mathbf{p},\mathbf{q}} \left\{\mathbf{p\transpose Xq}\right\}\quad\mathrm{under\;the\;constraints}\quad\mathbf{p\transpose p = q\transpose q =\:}1.
+\end{equation}\]</span>
+Here,  (respectively ) is the  (respectively )  that stores the coefficients to weight the rows (respectively the columns) of .</p>
+<p>This maximization problem can be solved by a gradient descent algorithm which consists of the following steps. First, a set of values is used to initialize the first left singular vector <span class="math inline">\(\prescript{}{}{\mathbf{p}}^1\)</span>, and these initialized (denoted by the subscript 0 on the left) values <span class="math inline">\(\prescript{}{0}{\mathbf{p}}^1\)</span> are then used to compute the initial values of $ ^1 $ (denoted by <span class="math inline">\(\prescript{}{0}{\mathbf{q}}^1\)</span>):
+<span class="math display">\[\begin{equation}\label{iter1_SVD}
+\delta\prescript{}{0}{\mathbf{q}}^1\mathbf{= X\transpose}\prescript{}{0}{\mathbf{p}}^1.
+\end{equation}\]</span>
+This $^1 $ can then be used to compute <span class="math inline">\(\prescript{}{1}{\mathbf{p}}^1\)</span>:
+<span class="math display">\[\begin{equation}\label{iter2_SVD}
+\delta\prescript{}{1}{\mathbf{p}}^1\mathbf{= X}\prescript{}{0}{\mathbf{q}}^1.
+\end{equation}\]</span>
+Next, Equations  and  are repeated respectively with <span class="math inline">\(\prescript{}{1}{\mathbf{p}}^1\)</span> and the next derived <span class="math inline">\(\prescript{}{1}{\mathbf{q}}^1\)</span>, and this procedure is iterated until $^1 $ and $ ^1 $ converge to stable outcomes. After the first set of singular vectors has been extracted, the second set (<span class="math inline">\(\textbf{p}^2\)</span> and <span class="math inline">\(\textbf{q}^2\)</span>) is derived from the data that are left (i.e., the ; <span class="math inline">\(\textbf{X} - \delta\mathbf{p}^1{\mathbf{q}^1}\transpose\)</span>) and is thus  to the first set of singular vectors (i.e., $ {<sup>1}</sup>2 = 0 $). Following the extraction of the second set of singular vectors, the third set can be extracted from the residual of the first two singular vectors and so on. As a result, together with the constraints from Equation , the relationship between different sets of singular vectors can be written as:
+<span class="math display">\[\begin{equation}\label{MaximizationConstraints_SVD}
+{\mathbf{p}^\ell}\transpose \mathbf{p}^{\ell^\prime} = {\mathbf{q}^\ell}\transpose \mathbf{q}^{\ell^\prime} =
+\begin{cases}
+\quad 1, &amp; \mathrm{when}\;\ell = \ell^\prime\\
+\quad 0, &amp; \mathrm{when}\;\ell\neq\ell^\prime
+\end{cases}.
+\end{equation}\]</span>
+If these multiple sets of singular vectors <span class="math inline">\(\textbf{p}^\ell\)</span> and <span class="math inline">\(\textbf{q}^\ell\)</span> are stored in the columns of matrices  and :
+<span class="math display">\[\begin{equation}\label{buildPQ_SVD}
+\mathbf{P} = \left[\mathbf{p}^1\,|\,\mathbf{p}^2\,|\,...\,|\,\mathbf{p}^\ell|\,...\,|\,\mathbf{p}^\textit{L}\right]
+\quad\mathrm{and}\quad
+\mathbf{Q} = \left[\mathbf{q}^1\,|\,\mathbf{q}^2\,|\,...\,|\,\mathbf{q}^\ell|\,...\,|\,\mathbf{q}^\textit{L}\right],
+\end{equation}\]</span>
+then SVD (cf. Equation ) can be expressed as:
+<span class="math display">\[\begin{equation}
+\mathbf{X = P\Delta Q\transpose}
+\label{PDQ}
+\end{equation}\]</span>
+with the constraints rewritten from Equation  as:
+<span class="math display">\[\begin{equation}
+\textbf{P}\transpose\textbf{P} = \textbf{Q}\transpose\textbf{Q} = \textbf{I}.
+\label{PTPQTQequalI}
+\end{equation}\]</span></p>
+<p>Here,  is the <span class="math inline">\(\times\)</span> matrix of the left singular vectors,  is the <span class="math inline">\(\times\)</span> matrix of the right singular vectors, and <span class="math inline">\(\mathbf{\Delta}\)</span> is the the <span class="math inline">\(\times\)</span> diagonal matrix of the singular values <span class="math inline">\(\delta\)</span>s. In addition, these $ $s are ordered from the largest to the smallest (i.e., <span class="math inline">\(\delta_1 &gt; \delta_2 &gt;...&gt; \delta_\textit{L}\)</span>), and the total number of non-zero singular values is equal to the rank of . Thus, the SVD gives the optimal decomposition of  with a given rank.</p>
+<p>Also, the squared singular values <span class="math inline">\(\mathbf{\delta}^2\)</span> (or <span class="math inline">\(\mathbf{\Delta}^2\)</span> as a diagonal matrix) are equal to the  <span class="math inline">\(\mathbf{\lambda}\)</span> (or <span class="math inline">\(\mathbf{\Lambda}\)</span> as a diagonal matrix) of matrices <span class="math inline">\(\transpose\)</span> and <span class="math inline">\(\transpose\)</span>, and  and  are the respective  of <span class="math inline">\(\transpose\)</span> and <span class="math inline">\(\transpose\)</span>. Note that when the eigenvalues of a matrix (e.g., ) are all positive, this matrix is called  (pd); when the eigenvalues of this matrix are non-negative values, this matrix is called  (psd).</p>
+
+<p>PCA extracts information by generating a set of orthogonal variables, called , with the first component explaining most of the variance of the data table. The elements of these components are called  or . First, almost always in PCA, the data table is preprocessed by centering its columns (i.e., each column has a mean of zero). Next, the columns can be normalized to exclude their units and are therefore comparable to each other. Finally, the set of factor scores of the first component ($ ^1 $) is computed as a linear combination of the original variables:
+<span class="math display">\[\begin{equation}\label{f1_PCA}
+\mathbf{f}^1 = \mathbf{Xq}^1,
+\end{equation}\]</span>
+where $ ^1 $ is a  $ $ 1 right singular vector that stores the coefficients for each column of , and in PCA, these coefficients are called . Furthermore, because the first component is defined to have the largest variance, and because its variance is computed by the sum of squares of its factor scores:
+<span class="math display">\[\begin{equation}\label{f1var_PCA}
+{\mathbf{f}^1}\transpose\mathbf{f}^1 = {\mathbf{q}^1}\transpose\mathbf{X\transpose} \mathbf{Xq}^1,
+\end{equation}\]</span>
+the step to find $ ^1 $ can then be described as the solution of the following maximization problem:
+<span class="math display">\[\begin{equation}\label{Maximization_PCA}
+\begin{split}
+\delta^2 &amp;= \argmax_{\mathbf{q}^1} \left\{{\mathbf{f}^1}\transpose\mathbf{f}^1\right\}
+= \argmax_{\mathbf{q}^1} \left\{{\mathbf{q}^1}\transpose\mathbf{X\transpose} \mathbf{Xq}^1\right\} \\
+&amp;= \argmax_{\mathbf{q}^1}\left\{\mathrm{var}(\mathbf{Xq}^1)\right\} = \argmax_{\mathbf{q}^1} \left\{\mathrm{cov}(\mathbf{Xq}^1, \mathbf{Xq}^1)\right\}\quad
+\mathrm{where}\quad{\mathbf{q}^1}\transpose \mathbf{q}^1 = 1. \\
+\end{split}
+\end{equation}\]</span>
+After the set of factor scores of the first component have been found, the set of factor scores of the following components are computed sequentially from the residual so that these components are orthogonal.</p>
+<p>If the factor scores $ ^$ and loadings $ ^$ of each component are stored in different columns of matrices  and  such that
+<span class="math display">\[\begin{equation}\label{buildFQ_PCA}
+\mathbf{F} = \left[\mathbf{f}^1\,|\,\mathbf{f}^2\,|\,...\,|\,\mathbf{f}^\ell|\,...\,|\,\mathbf{f}^\textit{L}\right]
+\quad\mathrm{and}\quad
+\mathbf{Q} = \left[\mathbf{q}^1\,|\,\mathbf{q}^2\,|\,...\,|\,\mathbf{q}^\ell|\,...\,|\,\mathbf{q}^\textit{L}\right],
+\end{equation}\]</span>
+Equation  can be rewritten as:
+<span class="math display">\[\begin{equation}
+\mathbf{F = XQ}
+\quad\mathrm{under\;the\;constraint\;that}\quad
+\mathbf{Q\transpose Q = I}.
+\label{FactorScores}
+\end{equation}\]</span>
+By computing the factor scores, PCA   onto the components; in other words, the factor scores $ ^$ are the  of the rows of  onto the $ $th component.</p>
+<p>In PCA, the maximization problem can also be rewritten from Equation  as the SVD of  (recall Equation ):
+<span class="math display">\[\begin{equation}
+\mathbf{X = FQ\transpose = P\Delta Q\transpose}\quad\mathrm{under\;the\;constraints}\quad
+\mathbf{P\transpose P = Q\transpose Q = I}.
+\label{XequalFQ}
+\end{equation}\]</span>
+In Equations  and ,  (respectively ) is the  (respectively ) <span class="math inline">\(\times\)</span> matrix of the left (respectively right) singular vectors, and <span class="math inline">\(\mathbf{\Delta}\)</span> is the <span class="math inline">\(\times\)</span> diagonal matrix of the singular values <span class="math inline">\(\delta\)</span>s. Moreover, if we rewrite Equation  from Equation , the factor scores can also be computed from  and <span class="math inline">\(\boldsymbol{\Delta}\)</span> as:
+<span class="math display">\[\begin{equation}
+\mathbf{F = XQ = P\Delta}
+\quad\mathrm{under\;the\;constraints}\quad
+\mathbf{P\transpose P = Q\transpose Q = I},
+\label{FactorScores2}
+\end{equation}\]</span>
+and the sums of squares of  that are maximized in PCA are equal to the eigenvalues <span class="math inline">\(\mathbf{\Lambda}\)</span> because
+<span class="math display">\[\begin{equation}\label{FtFeqLambda}
+\mathbf{F\transpose F = \Delta P\transpose P\Delta = \Delta}^2 = \mathbf{\Lambda}. 
+\end{equation}\]</span>
+As a result, each eigenvalue is the sum of squares of each component, and the sum of all eigenvalues gives the total sum of squares of the table—a quantity called the  of the data table. When the eigenvalues are divided by <span class="math inline">\(\textit{I}-1\)</span>, they give the variance of the components. Because the singular values are the square roots of the eigenvalues, singular values divided by <span class="math inline">\(\sqrt[]{\textit{I}-1}\)</span> give the standard deviation of the components.</p>
+<p>In addition, Equation  can be applied to map an out-of-sample observation (e.g., <span class="math inline">\(\mathbf{r}_\mathrm{sup}\)</span> as a row with matching columns) or an out-of-sample variable (e.g., <span class="math inline">\(\mathbf{c}_\mathrm{sup}\)</span> as a column with matching rows) onto the components. These out-of-sample elements are called  elements—as opposed to the  elements that are originally analyzed by PCA—and need to be preprocessed (i.e., centered and normalized) in the same way as the active elements of the original PCA. After proper preprocessing steps, the supplementary factor scores and loadings are computed as
+<span class="math display">\[\begin{equation}
+\mathbf{f}_\mathrm{sup} = \mathbf{r}_\mathrm{sup} \mathbf{Q}\qquad
+\mathrm{and}\qquad
+\mathbf{q}_\mathrm{sup} = \mathbf{c}_\mathrm{sup} \mathbf{P\Delta}^{-1}.
+\label{supp_PCA}
+\end{equation}\]</span></p>
+
 </div>
             </section>
 
@@ -215,6 +315,19 @@ gitbook.start({
 });
 </script>
 
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:" && /^https?:/.test(src))
+      src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
 </body>
 
 </html>

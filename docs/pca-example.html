@@ -25,7 +25,7 @@
 <meta name="author" content="Ju-Chi Yu">
 
 
-<meta name="date" content="2019-11-15">
+<meta name="date" content="2019-11-16">
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -159,8 +159,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h1><span class="header-section-number">3</span> PCA example</h1>
 <div id="example-data" class="section level2">
 <h2><span class="header-section-number">3.1</span> Example data</h2>
-<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(ExPosition)
-<span class="kw">data</span>(words)
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(ExPosition)</code></pre>
+<pre><code>## Loading required package: prettyGraphs</code></pre>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">data</span>(words)
 words<span class="op">$</span>data</code></pre>
 <pre><code>##             length definitions
 ## bag              3          14
@@ -245,6 +246,19 @@ gitbook.start({
 });
 </script>
 
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:" && /^https?:/.test(src))
+      src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
 </body>
 
 </html>
