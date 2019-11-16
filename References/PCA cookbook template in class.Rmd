@@ -1,0 +1,234 @@
+---
+title: "CookbookTemplate"
+author: "Ju-Chi Yu"
+date: "August 28, 2019"
+output:
+  html_document:
+    df_print: paged
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+# devtools::install_github("herveabdi/PTCA4CATA") # you only need this line of code if you haven't downloaded the package
+# install.packages("gridExtra")
+# install.packages("ggplotify")
+# install.packages("grid")
+library(devtools)
+library(ExPosition)
+library(corrplot)
+library(ggplot2)
+library(PTCA4CATA)
+
+# The following three functions allow you to arrange your plots in Rmarkdown
+library(gridExtra)
+library(ggplotify)
+library(grid)
+```
+
+This file is an example of a recipe card to go into your Cookbook. A recipe should include these 4 sections:
+
+* Method - highlight how each method works and the type(s) of data is can analyze
+
+* Data Set - introduce the data set to be analyzed 
+
+* Results - give a *concise* walk-through and interpretation of the analysis and results. 
+
+* Summary - very briefly tie things together.
+
+This process is like writing an actual book. We don't want to see exactly the steps that you went through to learn about what is going on in a data set. Instead, you should become familar with the data set and the results, and then tell the reader a story that guides them to the important information. 
+
+The "*NOTES*" below are our notes to you. They are important for this template recipe card, but they shouldn't be included in your future recipe cards. 
+
+Now let's get cooking!!
+
+## Method: PCA
+Principal component analysis (PCA) is used to analyze one table of quantitative data. PCA mixes the input variables to give new variables, called principal components. The first principal component is the line of best fit. It is the line that maximizes the inertia (similar to variance) of the cloud of data points. Subsequent components are defined as orthogonal to previous components, and maximize the remaining inertia. 
+
+PCA gives one map for the rows (called factor scores), and one map for the columns (called loadings). These 2 maps are related, because they both are described by the same components. However, these 2 maps project different kinds of information onto the components, and so they are *interpreted differently*. Factor scores are the coordinates of the row observations. They are interpreted by the distances between them, and their distance from the origin. Loadings describe the column variables. Loadings are interpreted by the angle between them, and their distance from the origin. 
+
+The distance from the origin is important in both maps, because squared distance from the mean is inertia (variance, information; see sum of squares as in ANOVA/regression). Because of the Pythagorean Theorem, the total information contributed by a data point (its squared distance to the origin) is also equal to the sum of its squared factor scores. 
+
+*NOTE: Please study this description of PCA, because this method is the core of RM3. Please ask us questions about it.*
+
+## Data set: state.x77
+State.x77 is a native data set in R. 
+It measures the 50 states (rows) on 8 quantitative variables (columns). 
+Measurements were taken around 1970, but differ slightly across variables. 
+
+*NOTE: We always need to know what information is on the rows, on the columns, and what type of data lives within each cell of the data table (quantitative measures, ratings, nominal labels, frequency, counts, probabilities). Also describe any important features of the data to provide context.*
+
+```{r data_set}
+head(state.x77)
+
+#For more info, 
+#see: "?state.x77"
+#also, type: "state.", and Tab to explore additional info
+```
+
+## Results
+```{r correlation plot, echo = TRUE}
+cor.res <- cor(state.x77)
+corrplot.mixed(cor.res, tl.cex = 0.7, tl.col = "black")
+cor.plot <- recordPlot() # you need this line to be able to save the figure to PPT later
+```
+
+Because each variable is measured on different units, I choose to center and scale the columns. The rows are color-coded by the DESIGN variable, state.division.
+
+*NOTE: You can add tips about the function to make it easier for your future self.*
+
+* `center = TRUE`: substracts the mean from each column 
+* `scale = TRUE`: after centering (or not), scales each column to have a sum of squares of 1 (see the help for different scaling options)
+* `DESIGN`: colors the observations (rows)
+* `graphs = FALSE`: this gives you plots from `epPCA`, but make sure to flag it `FALSE` for Rmarkdown to run correctly 
+
+```{r analyze, echo = TRUE}
+res_pca <- epPCA(state.x77, center = TRUE, scale = "SS1", DESIGN = state.division, graphs = FALSE)
+```
+
+*NOTE: ExPosition by default provides certain common results. You may want to plot other things as well. Plotting is one of the strengths of R, and so you have many many packages to beautifully visualize your data. We've here provided examples of how to use functions in * `PTCA4CATA`*, a plotting function in ExPosition. You should visit the help and play with the different parameters to learn how it works.*
+
+*NOTE: ExPosition functions (epPCA and prettyPlot) cannot automatically print results into an Rmd.*
+
+### Scree Plot
+The scree plot shows the eigenvalues, the amount of information on each component. The number of components (the dimensionality of the factor space) is min(nrow(DATA), ncol(DATA)) minus 1. Here, 8 columns give 7 components. The scree plot is used to determine how many of the components should be interpreted. 
+
+```{r scree plot}
+my.scree <- PlotScree(ev = res_pca$ExPosition.Data$eigs)
+my.scree <- recordPlot() # you need this line to be able to save them in the end
+
+```
+
+### Factor scores
+Factor scores are the coordinates of the 50 states on the components. The distances between them show which states are most similar. Factor scores (states) can be color-coded to help interpret the components.
+
+*CHALLENGE: visit the help and play with the different parameters to learn how* `createFactorMap` *works. Many of these parameterms are commonly used for plotting, and we'll use them often.*
+
+```{r factor scores}
+my.fi.plot <- createFactorMap(res_pca$ExPosition.Data$fi, # data
+                            title = "State.x77 Row Factor Scores", # title of the plot
+                            axis1 = 1, axis2 = 2, # which component for x and y axes
+                            pch = 19, # the shape of the dots (google `pch`)
+                            cex = 2, # the size of the dots
+                            text.cex = 2.5, # the size of the text
+                            col.points = res_pca$Plotting.Data$fi.col, # color of the dots
+                            col.labels = res_pca$Plotting.Data$fi.col, # color for labels of dots
+                            )
+
+fi.labels <- createxyLabels.gen(1,2,
+                             lambda = res_pca$ExPosition.Data$eigs,
+                             tau = round(res_pca$ExPosition.Data$t),
+                             axisName = "Component "
+                             )
+fi.plot <- my.fi.plot$zeMap + fi.labels # you need this line to be able to save them in the end
+fi.plot
+```
+
+* Component 1: Many regions VS Southeast 
+* Component 2: Alaska & California  
+
+*NOTE: The "division" and the "region" of the states could both be used to color-code the states. We analyzed state.x77 and color-coded by division. Because you are currently learning the methods, you should explore other ways of analyzing. Should you center? scale? analyze just a group of rows, or remove a certain variable?*
+
+### Loadings
+Loadings describe the similarity (angular distance) between the variables. Loadings show how the input variables relate to each other. Loadings also show which variables are important for (which components load on) a certain component.
+
+*NOTE: ExPosition by default provides certain common results. You may want to plot other things as well.*
+*NOTE: Plotting is one of the strengths of R, and so you have many many packages to beautifully visualize your data. We've here provided examples of how to use the plotting function in PTCA4CATA. You can visit the help and play with the different parameters to learn how it works. You could also try to plot it yourself with ggplot2.*
+
+```{r}
+cor.loading <- cor(state.x77, res_pca$ExPosition.Data$fi)
+rownames(cor.loading) <- rownames(cor.loading)
+
+loading.plot <- createFactorMap(cor.loading,
+                                constraints = list(minx = -1, miny = -1,
+                                                   maxx = 1, maxy = 1))
+LoadingMapWithCircles <- loading.plot$zeMap + 
+  addArrows(cor.loading, color = "magenta4") + 
+  addCircleOfCor() + xlab("Component 1") + ylab("Component 2")
+
+LoadingMapWithCircles
+```
+
+You can also include the variance of each component and plot the factor scores for the columns (i.e., the variables):
+
+```{r}
+my.fj.plot <- createFactorMap(res_pca$ExPosition.Data$fj, # data
+                            title = "State.x77 Column Factor Scores", # title of the plot
+                            axis1 = 1, axis2 = 2, # which component for x and y axes
+                            pch = 19, # the shape of the dots (google `pch`)
+                            cex = 3, # the size of the dots
+                            text.cex = 3, # the size of the text
+                            col.points = res_pca$Plotting.Data$fj.col, # color of the dots
+                            col.labels = res_pca$Plotting.Data$fj.col, # color for labels of dots
+                            )
+
+fj.plot <- my.fj.plot$zeMap + fi.labels # you need this line to be able to save them in the end
+fj.plot
+```
+
+* Component 1: Life Exp & HS Grad VS Illiteracy & Murder 
+
+* Component 2: Area  
+
+
+#### Contributions of columns
+
+We can also see how the variables contribute to each component by plotting the contributions with a line that represents the threshold we compared them to.
+
+##### Component 1
+
+```{r}
+signed.ctrJ <- res_pca$ExPosition.Data$cj * sign(res_pca$ExPosition.Data$fj)
+
+# plot contributions for component 1
+ctrJ.1 <- PrettyBarPlot2(signed.ctrJ[,1],
+                         threshold = 1 / NROW(signed.ctrJ),
+                         font.size = 5,
+                         color4bar = gplots::col2hex(res_pca$Plotting.Data$fj.col), # we need hex code
+                         main = 'Component 1: Variable Contributions (Signed)',
+                         ylab = 'Contributions',
+                         ylim = c(1.2*min(signed.ctrJ), 1.2*max(signed.ctrJ))
+)
+
+# plot contributions for component 2
+ctrJ.2 <- PrettyBarPlot2(signed.ctrJ[,2],
+                         threshold = 1 / NROW(signed.ctrJ),
+                         font.size = 5,
+                         color4bar = gplots::col2hex(res_pca$Plotting.Data$fj.col), # we need hex code
+                         main = 'Component 2: Variable Contributions (Signed)',
+                         ylab = 'Contributions',
+                         ylim = c(1.2*min(signed.ctrJ), 1.2*max(signed.ctrJ))
+)
+
+```
+
+We then use the next line of code to put two figures side to side:
+
+```{r grid_ctrJ, echo = T, fig.width = 10, fig.height = 4}
+gridExtra::grid.arrange(as.grob(ctrJ.1), as.grob(ctrJ.2),
+                        ncol=2, top = textGrob("Contribution barplots",gp=gpar(fontsize=18,font=3)))
+BothCtrJ <- recordPlot() # you need this line to be able to save them in the end
+```
+
+
+### Save figures to PPT
+
+The following chunk can give you a .pptx file with all your figures saved in the directory.
+
+*REMEMBER: Never use a screen shot*
+
+```{r}
+# Here we can save all figures to a PowerPoint
+savedList <- saveGraph2pptx(file2Save.pptx = 'AllFigures', 
+                            title = 'All Figures', 
+                            addGraphNames = TRUE)
+
+```
+
+## Summary
+When we interpret the factor scores and loadings together, the PCA revealed:
+
+* Component 1: Southeastern states were low in education and safety
+
+* Component 2: Alaska & California were big
+
+* Both: Higher population went with lower average income
