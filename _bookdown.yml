@@ -1,0 +1,4 @@
+book_filename: "Multivariate_Bookdown"
+rmd_subdir: Rmd
+edit: https://github.com/juchiyu/MultivarBook/edit/master/%s
+output_dir: "docs"

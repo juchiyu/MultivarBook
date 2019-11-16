@@ -1,0 +1,13 @@
+# PCA example
+
+## Example data
+
+```{r}
+library(ExPosition)
+data(words)
+words$data
+```
+
+
+### Design of the data 
+

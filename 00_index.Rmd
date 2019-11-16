@@ -1,0 +1,24 @@
+--- 
+title: "Multivariate Cookbook"
+author: "Ju-Chi Yu"
+date: "`r Sys.Date()`"
+lass: book
+documentclass: book
+output:
+  bookdown::gitbook: 
+    config:
+      toc:
+        collapse: section
+        scroll_highlight: yes
+      toolbar:
+        position: static
+      search: yes
+  bookdown::pdf_book: default
+description: "This book provides an introduction of simple and advanced multivariate analysis."
+---
+
+# Preface{-}
+
+## What is multivariate analysis?
+
+## Common methods in multivariate analysis

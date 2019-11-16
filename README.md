@@ -7,6 +7,12 @@ This book provides an introduction of simple and advanced multivariate analysis.
 
 We are using `ExPosition` by Dr. Derek Beaton to run the analysis and functions in `PTCA4CATA` by Dr. Hervé Abdi to create plots from the results.
 
+## Materials
+
+Bookdown: https://bookdown.org/yihui/bookdown/get-started.html
+
+
+
 ## How to contribute?
 
 1. Please check out the issues by clicking the tabs on the top of this github page and pick one to contribute.

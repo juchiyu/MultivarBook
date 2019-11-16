@@ -1,0 +1,19 @@
+language: r
+cache: packages
+pandoc_version: 1.19.2.1
+
+r_packages:
+  - bookdown
+
+script:
+  - Rscript -e 'bookdown::render_book("index.Rmd", "bookdown::gitbook")'
+
+deploy:
+  provider: pages                  # Specify the gh-pages deployment method
+  skip_cleanup: true               # Don't remove files
+  github_token: $GITHUB_TOKEN      # Set in travis-ci.org dashboard
+  local_dir: docs                  # Deploy the docs folder
+  on:
+    branch:
+    - master
+    - try_bash

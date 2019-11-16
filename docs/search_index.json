@@ -1,0 +1,7 @@
+[
+["preface.html", "Multivariate Cookbook Preface 0.1 What is multivariate analysis? 0.2 Common methods in multivariate analysis", " Multivariate Cookbook Ju-Chi Yu 2019-11-15 Preface 0.1 What is multivariate analysis? 0.2 Common methods in multivariate analysis "],
+["pca.html", "PCA", " PCA "],
+["pca-intro.html", "1 What is Principal Component Analysis (PCA)?", " 1 What is Principal Component Analysis (PCA)? "],
+["svd.html", "2 Singular value decomposition", " 2 Singular value decomposition "],
+["pca-example.html", "3 PCA example 3.1 Example data", " 3 PCA example 3.1 Example data library(ExPosition) data(words) words$data ## length definitions ## bag 3 14 ## across 6 7 ## on 2 11 ## insane 6 9 ## by 2 9 ## monastery 9 4 ## relief 6 8 ## slope 5 11 ## scoundrel 9 5 ## with 4 8 ## neither 7 2 ## pretentious 11 4 ## solid 5 12 ## this 4 9 ## for 3 8 ## therefore 9 1 ## generality 10 4 ## arise 5 13 ## blot 4 15 ## infectious 10 6 3.1.1 Design of the data "]
+]
