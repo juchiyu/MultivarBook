@@ -1,6 +1,6 @@
 --- 
 title: "Multivariate Cookbook"
-author: "Ju-Chi Yu"
+author: "Ju-Chi Yu and Sheila Meldrum"
 date: "`r Sys.Date()`"
 lass: book
 documentclass: book
