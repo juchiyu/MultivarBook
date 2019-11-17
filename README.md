@@ -1,6 +1,6 @@
 # MultivarBook
 
-##### Updated: 11/11/2019
+##### Updated: 11/17/2019
 
 ## Goals
 This book provides an introduction of simple and advanced multivariate analysis. The materials are inspired by the Advanced Research Method class by Dr. Hervé Abdi at the University of Texas at Dallas.
