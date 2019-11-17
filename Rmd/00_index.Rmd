@@ -19,6 +19,42 @@ description: "This book provides an introduction of simple and advanced multivar
 
 # Preface{-}
 
-## What is multivariate analysis?
+## Mulitvariate analyses vs. Univariate anlyses
+
+What are multivariate analyses? 
+Component-based multivariate methods are primarily data driven exploratory techniques of the underlying structure (i.e. latent structure) of a multivariate data set. These underlying structers are represted by a mixture of the original variables---called components or factors---which explain the most information about your observations.
+
+When would I use multivariate instead of univariate analyses?
+1. When you want to understand the relationship between multiple (2 +) outcome variables/measurements. 
+
+Note a Principle Component Analysis (PCA) with two variables would be the same as a pearson correlation (r). 
+
+2. Exploratory data analysis, when you don't have *a priori* hypotheses about the structure of your data. 
+
+Example: You are using a large archival data set that includes multiple behavioral measurements (i.e., surveys, performance data, etc).
+
+3. Dimention reduction
+
+Example: Machine learning 
+
+4. Identify unique patterns across observations 
+
+Example: Eigen faces (maybe), time series data, functional PCA 
+
+-Univariate statistics are most appropriate to use when you have one outcome or measured variable and have planned inferences based on *a priori* hypotheses.  
 
 ## Common methods in multivariate analysis
+
+Insert table of commonly used mulitvariate analyses and the type of data needed to conduct said analysis 
+Rows: one table, two table, and multi-table (2+) analyses for quantitative, qualitative, and mixed data sets 
+Columns: Variable/data, Analysis, Results/output
+
+note we can use this table as a kind of index for people to find the type of analysis they should do based on the type of data they are wanting to analyses
+```{r echo=TRUE results='asis'}
+library(knitr)
+
+TableCols <- c("Type of Data", "Analysis", "Results") 
+SingleTable <- c("Quantitiative", "PCA", )
+
+kable(x = ,col.names = TableCols ,caption = "Comparison between Multivariate and Univariate Analyses")
+```
