@@ -50,6 +50,7 @@ Rows: one table, two table, and multi-table (2+) analyses for quantitative, qual
 Columns: Variable/data, Analysis, Results/output
 
 note we can use this table as a kind of index for people to find the type of analysis they should do based on the type of data they are wanting to analyses
+
 ```{r echo=FALSE, results='asis'}
 library(knitr)
 
