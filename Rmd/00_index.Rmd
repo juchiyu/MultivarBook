@@ -50,11 +50,23 @@ Rows: one table, two table, and multi-table (2+) analyses for quantitative, qual
 Columns: Variable/data, Analysis, Results/output
 
 note we can use this table as a kind of index for people to find the type of analysis they should do based on the type of data they are wanting to analyses
-```{r echo=TRUE results='asis'}
+
+```{r echo=FALSE, results='asis'}
 library(knitr)
 
-TableCols <- c("Type of Data", "Analysis", "Results") 
-SingleTable <- c("Quantitiative", "PCA", )
+TableCols <- c("Type of Data", "Data Structure","Analysis", "Results") 
+Quant1 <- c("Quantitative","Single Table","PCA","factor scores and column loadings")
+Quant2 <- c("Quantitative", "Two Tables", "PLS", "insert")
+Quant3 <- c("Quantitative", "Two Tables", "BADA", "insert")
+Quant4 <- c("Quantitative", "Multiple (2+) Tables", "MFA", "insert")
+Quant5 <- c("Quantitative", "Multiple (2+) TAbles", "Statis", "insert")
+Qual1 <- c("Qualitative", "Single Table", "CA", "insert")
+Qual2 <- c("Qualitative", "Two or More Tables", "MCA", "insert")
+Qual3 <- c("Qualitative", "Two or More Tables", "PLS-CA", "insert")
+Qual4 <- c("Mixed", "Two or More Tables", "Mixed PLS", "insert")
+tb <- rbind.data.frame(Quant1, Quant2, Quant3, Quant4, Quant5, Qual1, Qual2, Qual3, Qual4) 
+colnames(tb) <- TableCols
 
-kable(x = ,col.names = TableCols ,caption = "Comparison between Multivariate and Univariate Analyses")
+
+kable(x = tb, row.names = FALSE,col.names = TableCols ,caption = "Comparison between Multivariate and Univariate Analyses")
 ```
