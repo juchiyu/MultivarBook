@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>2 Singular value decomposition | Multivariate Cookbook</title>
+  <title>2 Singular Value Decomposition (SVD) | Multivariate Cookbook</title>
   <meta name="description" content="This book provides an introduction of simple and advanced multivariate analysis." />
-  <meta name="generator" content="bookdown 0.15 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.13 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="2 Singular value decomposition | Multivariate Cookbook" />
+  <meta property="og:title" content="2 Singular Value Decomposition (SVD) | Multivariate Cookbook" />
   <meta property="og:type" content="book" />
   
   
@@ -16,7 +16,7 @@
   
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="2 Singular value decomposition | Multivariate Cookbook" />
+  <meta name="twitter:title" content="2 Singular Value Decomposition (SVD) | Multivariate Cookbook" />
   
   <meta name="twitter:description" content="This book provides an introduction of simple and advanced multivariate analysis." />
   
@@ -24,15 +24,15 @@
 <meta name="author" content="Ju-Chi Yu and Sheila Meldrum" />
 
 
-<meta name="date" content="2019-11-17" />
+<meta name="date" content="2019-12-15" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="pca-intro.html"/>
-<link rel="next" href="pca-example.html"/>
+<link rel="prev" href="principal-component-analysis-pca.html"/>
+
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
@@ -40,9 +40,6 @@
 <link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
-<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
-
-
 
 
 
@@ -128,24 +125,27 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
 <ul class="summary">
 <li class="chapter" data-level="" data-path="preface.html"><a href="preface.html"><i class="fa fa-check"></i>Preface</a><ul>
-<li class="chapter" data-level="0.1" data-path="preface.html"><a href="preface.html#mulitvariate-analyses-vs.univariate-anlyses"><i class="fa fa-check"></i><b>0.1</b> Mulitvariate analyses vs. Univariate anlyses</a></li>
-<li class="chapter" data-level="0.2" data-path="preface.html"><a href="preface.html#common-methods-in-multivariate-analysis"><i class="fa fa-check"></i><b>0.2</b> Common methods in multivariate analysis</a></li>
+<li class="chapter" data-level="" data-path="preface.html"><a href="preface.html#what-are-multivariate-analyses"><i class="fa fa-check"></i>What are Multivariate Analyses?</a></li>
+<li class="chapter" data-level="" data-path="preface.html"><a href="preface.html#multivariate-vs.univariate-analyses"><i class="fa fa-check"></i>Multivariate vs. Univariate Analyses</a><ul>
+<li class="chapter" data-level="" data-path="preface.html"><a href="preface.html#when-to-use-univariate-analyses"><i class="fa fa-check"></i>When to Use Univariate Analyses?</a></li>
+<li class="chapter" data-level="" data-path="preface.html"><a href="preface.html#when-to-use-multivariate-techniques"><i class="fa fa-check"></i>When to Use Multivariate Techniques?</a></li>
 </ul></li>
-<li class="chapter" data-level="" data-path="principal-component-analysis-pca.html"><a href="principal-component-analysis-pca.html"><i class="fa fa-check"></i>Principal Component Analysis (PCA)</a></li>
-<li class="chapter" data-level="1" data-path="pca-intro.html"><a href="pca-intro.html"><i class="fa fa-check"></i><b>1</b> PCA introduction?</a><ul>
-<li class="chapter" data-level="1.1" data-path="pca-intro.html"><a href="pca-intro.html#when-should-you-do-a-pca"><i class="fa fa-check"></i><b>1.1</b> When should you do a PCA?</a></li>
-<li class="chapter" data-level="1.2" data-path="pca-intro.html"><a href="pca-intro.html#how-pca-is-different-from-factor-analysis-and-item-analysis"><i class="fa fa-check"></i><b>1.2</b> How PCA is different from factor analysis and item analysis?</a></li>
-<li class="chapter" data-level="1.3" data-path="pca-intro.html"><a href="pca-intro.html#what-does-pca-do"><i class="fa fa-check"></i><b>1.3</b> What does PCA do?</a></li>
-<li class="chapter" data-level="1.4" data-path="pca-intro.html"><a href="pca-intro.html#what-are-expected-from-pca"><i class="fa fa-check"></i><b>1.4</b> What are expected from PCA?</a></li>
-<li class="chapter" data-level="1.5" data-path="pca-intro.html"><a href="pca-intro.html#how-do-i-do-pca"><i class="fa fa-check"></i><b>1.5</b> How do I do PCA?</a></li>
-<li class="chapter" data-level="1.6" data-path="pca-intro.html"><a href="pca-intro.html#show-me-the-math"><i class="fa fa-check"></i><b>1.6</b> Show me the math</a></li>
+<li class="chapter" data-level="" data-path="preface.html"><a href="preface.html#common-multivariate-analyses"><i class="fa fa-check"></i>Common Multivariate Analyses</a></li>
 </ul></li>
-<li class="chapter" data-level="2" data-path="svd.html"><a href="svd.html"><i class="fa fa-check"></i><b>2</b> Singular value decomposition</a></li>
-<li class="chapter" data-level="3" data-path="pca-example.html"><a href="pca-example.html"><i class="fa fa-check"></i><b>3</b> PCA example</a><ul>
-<li class="chapter" data-level="3.1" data-path="pca-example.html"><a href="pca-example.html#example-data"><i class="fa fa-check"></i><b>3.1</b> Example data</a><ul>
-<li class="chapter" data-level="3.1.1" data-path="pca-example.html"><a href="pca-example.html#design-of-the-data"><i class="fa fa-check"></i><b>3.1.1</b> Design of the data</a></li>
+<li class="chapter" data-level="1" data-path="principal-component-analysis-pca.html"><a href="principal-component-analysis-pca.html"><i class="fa fa-check"></i><b>1</b> Principal Component Analysis (PCA)</a><ul>
+<li class="chapter" data-level="1.1" data-path="principal-component-analysis-pca.html"><a href="principal-component-analysis-pca.html#pca_intro"><i class="fa fa-check"></i><b>1.1</b> What is PCA?</a></li>
+<li class="chapter" data-level="1.2" data-path="principal-component-analysis-pca.html"><a href="principal-component-analysis-pca.html#when-to-use-pca"><i class="fa fa-check"></i><b>1.2</b> When to Use PCA?</a></li>
+<li class="chapter" data-level="1.3" data-path="principal-component-analysis-pca.html"><a href="principal-component-analysis-pca.html#how-pca-is-different-from-factor-analysis-or-item-analysis"><i class="fa fa-check"></i><b>1.3</b> How PCA is Different from Factor Analysis or Item Analysis?</a></li>
+<li class="chapter" data-level="1.4" data-path="principal-component-analysis-pca.html"><a href="principal-component-analysis-pca.html#how-does-pca-work"><i class="fa fa-check"></i><b>1.4</b> How Does PCA Work?</a></li>
+<li class="chapter" data-level="1.5" data-path="principal-component-analysis-pca.html"><a href="principal-component-analysis-pca.html#what-are-the-assumptions-of-pca"><i class="fa fa-check"></i><b>1.5</b> What are the Assumptions of PCA?</a></li>
+<li class="chapter" data-level="1.6" data-path="principal-component-analysis-pca.html"><a href="principal-component-analysis-pca.html#example-using-r"><i class="fa fa-check"></i><b>1.6</b> Example using R</a><ul>
+<li class="chapter" data-level="1.6.1" data-path="principal-component-analysis-pca.html"><a href="principal-component-analysis-pca.html#packages"><i class="fa fa-check"></i><b>1.6.1</b> Packages</a></li>
+<li class="chapter" data-level="1.6.2" data-path="principal-component-analysis-pca.html"><a href="principal-component-analysis-pca.html#data"><i class="fa fa-check"></i><b>1.6.2</b> Data</a></li>
+<li class="chapter" data-level="1.6.3" data-path="principal-component-analysis-pca.html"><a href="principal-component-analysis-pca.html#analysis"><i class="fa fa-check"></i><b>1.6.3</b> Analysis</a></li>
 </ul></li>
+<li class="chapter" data-level="1.7" data-path="principal-component-analysis-pca.html"><a href="principal-component-analysis-pca.html#show-me-the-math"><i class="fa fa-check"></i><b>1.7</b> Show Me the Math</a></li>
 </ul></li>
+<li class="chapter" data-level="2" data-path="svd.html"><a href="svd.html"><i class="fa fa-check"></i><b>2</b> Singular Value Decomposition (SVD)</a></li>
 </ul>
 
       </nav>
@@ -164,7 +164,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
             <section class="normal" id="section-">
 <div id="svd" class="section level1">
-<h1><span class="header-section-number">2</span> Singular value decomposition</h1>
+<h1><span class="header-section-number">2</span> Singular Value Decomposition (SVD)</h1>
 
 </div>
             </section>
@@ -172,30 +172,30 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           </div>
         </div>
       </div>
-<a href="pca-intro.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="pca-example.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="principal-component-analysis-pca.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
 <script src="libs/gitbook-2.6.7/js/lunr.js"></script>
-<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
 <script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
-<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
 <script>
 gitbook.require(["gitbook"], function(gitbook) {
 gitbook.start({
 "sharing": {
+"github": false,
 "facebook": true,
 "twitter": true,
+"google": false,
 "linkedin": false,
 "weibo": false,
 "instapaper": false,
 "vk": false,
-"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+"all": ["facebook", "google", "twitter", "linkedin", "weibo", "instapaper"]
 },
 "fontsettings": {
 "theme": "white",
@@ -203,7 +203,7 @@ gitbook.start({
 "size": 2
 },
 "edit": {
-"link": "https://github.com/juchiyu/MultivarBook/edit/master/Rmd/02_Ch1.2_SVD.Rmd",
+"link": "https://github.com/juchiyu/MultivarBook/edit/master/Rmd/01-02-svd.Rmd",
 "text": "Edit"
 },
 "history": {
@@ -223,6 +223,20 @@ gitbook.start({
 });
 </script>
 
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
 </body>
 
 </html>
