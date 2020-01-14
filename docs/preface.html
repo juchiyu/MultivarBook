@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Multivariate Cookbook</title>
   <meta name="description" content="This book provides an introduction of simple and advanced multivariate analysis." />
-  <meta name="generator" content="bookdown 0.15 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.13 and GitBook 2.6.7" />
 
   <meta property="og:title" content="Multivariate Cookbook" />
   <meta property="og:type" content="book" />
@@ -24,7 +24,7 @@
 <meta name="author" content="Ju-Chi Yu and Sheila Meldrum" />
 
 
-<meta name="date" content="2019-11-17" />
+<meta name="date" content="2019-12-15" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -40,9 +40,6 @@
 <link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
-<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
-
-
 
 
 
@@ -128,23 +125,43 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
 <ul class="summary">
 <li class="chapter" data-level="" data-path="preface.html"><a href="preface.html"><i class="fa fa-check"></i>Preface</a><ul>
-<li class="chapter" data-level="0.1" data-path="preface.html"><a href="preface.html#mulitvariate-analyses-vs.univariate-anlyses"><i class="fa fa-check"></i><b>0.1</b> Mulitvariate analyses vs. Univariate anlyses</a></li>
-<li class="chapter" data-level="0.2" data-path="preface.html"><a href="preface.html#common-methods-in-multivariate-analysis"><i class="fa fa-check"></i><b>0.2</b> Common methods in multivariate analysis</a></li>
+<li class="chapter" data-level="" data-path="preface.html"><a href="preface.html#what-are-multivariate-analyses"><i class="fa fa-check"></i>What are Multivariate Analyses?</a></li>
+<li class="chapter" data-level="" data-path="preface.html"><a href="preface.html#multivariate-vs.univariate-analyses"><i class="fa fa-check"></i>Multivariate vs. Univariate Analyses</a><ul>
+<li class="chapter" data-level="" data-path="preface.html"><a href="preface.html#when-to-use-univariate-analyses"><i class="fa fa-check"></i>When to Use Univariate Analyses?</a></li>
+<li class="chapter" data-level="" data-path="preface.html"><a href="preface.html#when-to-use-multivariate-techniques"><i class="fa fa-check"></i>When to Use Multivariate Techniques?</a></li>
 </ul></li>
-<li class="chapter" data-level="" data-path="principal-component-analysis-pca.html"><a href="principal-component-analysis-pca.html"><i class="fa fa-check"></i>Principal Component Analysis (PCA)</a></li>
-<li class="chapter" data-level="1" data-path="pca-intro.html"><a href="pca-intro.html"><i class="fa fa-check"></i><b>1</b> PCA introduction?</a><ul>
-<li class="chapter" data-level="1.1" data-path="pca-intro.html"><a href="pca-intro.html#when-should-you-do-a-pca"><i class="fa fa-check"></i><b>1.1</b> When should you do a PCA?</a></li>
-<li class="chapter" data-level="1.2" data-path="pca-intro.html"><a href="pca-intro.html#how-pca-is-different-from-factor-analysis-and-item-analysis"><i class="fa fa-check"></i><b>1.2</b> How PCA is different from factor analysis and item analysis?</a></li>
-<li class="chapter" data-level="1.3" data-path="pca-intro.html"><a href="pca-intro.html#what-does-pca-do"><i class="fa fa-check"></i><b>1.3</b> What does PCA do?</a></li>
-<li class="chapter" data-level="1.4" data-path="pca-intro.html"><a href="pca-intro.html#what-are-expected-from-pca"><i class="fa fa-check"></i><b>1.4</b> What are expected from PCA?</a></li>
-<li class="chapter" data-level="1.5" data-path="pca-intro.html"><a href="pca-intro.html#how-do-i-do-pca"><i class="fa fa-check"></i><b>1.5</b> How do I do PCA?</a></li>
-<li class="chapter" data-level="1.6" data-path="pca-intro.html"><a href="pca-intro.html#show-me-the-math"><i class="fa fa-check"></i><b>1.6</b> Show me the math</a></li>
+<li class="chapter" data-level="" data-path="preface.html"><a href="preface.html#common-multivariate-analyses"><i class="fa fa-check"></i>Common Multivariate Analyses</a></li>
+<li class="chapter" data-level="" data-path="preface.html"><a href="preface.html#what-will-this-book-cover"><i class="fa fa-check"></i>What Will this Book Cover?</a></li>
+<li class="chapter" data-level="" data-path="preface.html"><a href="preface.html#how-will-this-book-be-covered"><i class="fa fa-check"></i>How Will this Book be Covered?</a></li>
 </ul></li>
-<li class="chapter" data-level="2" data-path="svd.html"><a href="svd.html"><i class="fa fa-check"></i><b>2</b> Singular value decomposition</a></li>
-<li class="chapter" data-level="3" data-path="pca-example.html"><a href="pca-example.html"><i class="fa fa-check"></i><b>3</b> PCA example</a><ul>
-<li class="chapter" data-level="3.1" data-path="pca-example.html"><a href="pca-example.html#example-data"><i class="fa fa-check"></i><b>3.1</b> Example data</a><ul>
-<li class="chapter" data-level="3.1.1" data-path="pca-example.html"><a href="pca-example.html#design-of-the-data"><i class="fa fa-check"></i><b>3.1.1</b> Design of the data</a></li>
+<li class="chapter" data-level="1" data-path="principal-component-analysis-pca.html"><a href="principal-component-analysis-pca.html"><i class="fa fa-check"></i><b>1</b> Principal Component Analysis (PCA)</a><ul>
+<li class="chapter" data-level="1.1" data-path="principal-component-analysis-pca.html"><a href="principal-component-analysis-pca.html#description"><i class="fa fa-check"></i><b>1.1</b> Description</a><ul>
+<li class="chapter" data-level="1.1.1" data-path="principal-component-analysis-pca.html"><a href="principal-component-analysis-pca.html#pca_intro"><i class="fa fa-check"></i><b>1.1.1</b> What is PCA?</a></li>
+<li class="chapter" data-level="1.1.2" data-path="principal-component-analysis-pca.html"><a href="principal-component-analysis-pca.html#singular-value-decomposition-svd"><i class="fa fa-check"></i><b>1.1.2</b> Singular Value Decomposition (SVD)</a></li>
+<li class="chapter" data-level="1.1.3" data-path="principal-component-analysis-pca.html"><a href="principal-component-analysis-pca.html#how-to-interpret-these-matrices"><i class="fa fa-check"></i><b>1.1.3</b> How to Interpret these Matrices?</a></li>
+<li class="chapter" data-level="1.1.4" data-path="principal-component-analysis-pca.html"><a href="principal-component-analysis-pca.html#what-are-the-assumptions-of-pca"><i class="fa fa-check"></i><b>1.1.4</b> What are the Assumptions of PCA?</a></li>
 </ul></li>
+<li class="chapter" data-level="1.2" data-path="principal-component-analysis-pca.html"><a href="principal-component-analysis-pca.html#example"><i class="fa fa-check"></i><b>1.2</b> Example</a><ul>
+<li class="chapter" data-level="1.2.1" data-path="principal-component-analysis-pca.html"><a href="principal-component-analysis-pca.html#packages"><i class="fa fa-check"></i><b>1.2.1</b> Packages</a></li>
+<li class="chapter" data-level="1.2.2" data-path="principal-component-analysis-pca.html"><a href="principal-component-analysis-pca.html#data"><i class="fa fa-check"></i><b>1.2.2</b> Data</a></li>
+<li class="chapter" data-level="1.2.3" data-path="principal-component-analysis-pca.html"><a href="principal-component-analysis-pca.html#data-pre-processing"><i class="fa fa-check"></i><b>1.2.3</b> Data Pre-Processing</a></li>
+<li class="chapter" data-level="1.2.4" data-path="principal-component-analysis-pca.html"><a href="principal-component-analysis-pca.html#descriptive-statistics"><i class="fa fa-check"></i><b>1.2.4</b> Descriptive Statistics</a></li>
+<li class="chapter" data-level="1.2.5" data-path="principal-component-analysis-pca.html"><a href="principal-component-analysis-pca.html#analysis"><i class="fa fa-check"></i><b>1.2.5</b> Analysis</a></li>
+<li class="chapter" data-level="1.2.6" data-path="principal-component-analysis-pca.html"><a href="principal-component-analysis-pca.html#number-of-components"><i class="fa fa-check"></i><b>1.2.6</b> Number of Components</a></li>
+<li class="chapter" data-level="1.2.7" data-path="principal-component-analysis-pca.html"><a href="principal-component-analysis-pca.html#visualize-and-interpret-components"><i class="fa fa-check"></i><b>1.2.7</b> Visualize and Interpret Components</a></li>
+</ul></li>
+<li class="chapter" data-level="1.3" data-path="principal-component-analysis-pca.html"><a href="principal-component-analysis-pca.html#behind-the-scenes"><i class="fa fa-check"></i><b>1.3</b> Behind-the-Scenes</a><ul>
+<li class="chapter" data-level="1.3.1" data-path="principal-component-analysis-pca.html"><a href="principal-component-analysis-pca.html#svd"><i class="fa fa-check"></i><b>1.3.1</b> SVD</a></li>
+<li class="chapter" data-level="1.3.2" data-path="principal-component-analysis-pca.html"><a href="principal-component-analysis-pca.html#svd-results"><i class="fa fa-check"></i><b>1.3.2</b> SVD Results</a></li>
+<li class="chapter" data-level="1.3.3" data-path="principal-component-analysis-pca.html"><a href="principal-component-analysis-pca.html#projections"><i class="fa fa-check"></i><b>1.3.3</b> Projections</a></li>
+</ul></li>
+<li class="chapter" data-level="1.4" data-path="principal-component-analysis-pca.html"><a href="principal-component-analysis-pca.html#math-walk-through"><i class="fa fa-check"></i><b>1.4</b> Math Walk-Through</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="correspondence-analysis-ca.html"><a href="correspondence-analysis-ca.html"><i class="fa fa-check"></i><b>2</b> Correspondence Analysis (CA)</a><ul>
+<li class="chapter" data-level="2.1" data-path="correspondence-analysis-ca.html"><a href="correspondence-analysis-ca.html#description-1"><i class="fa fa-check"></i><b>2.1</b> Description</a></li>
+<li class="chapter" data-level="2.2" data-path="correspondence-analysis-ca.html"><a href="correspondence-analysis-ca.html#example-1"><i class="fa fa-check"></i><b>2.2</b> Example</a></li>
+<li class="chapter" data-level="2.3" data-path="correspondence-analysis-ca.html"><a href="correspondence-analysis-ca.html#behind-the-scenes-1"><i class="fa fa-check"></i><b>2.3</b> Behind-the-Scenes</a></li>
+<li class="chapter" data-level="2.4" data-path="correspondence-analysis-ca.html"><a href="correspondence-analysis-ca.html#math-walk-through-1"><i class="fa fa-check"></i><b>2.4</b> Math Walk-Through</a></li>
 </ul></li>
 </ul>
 
@@ -166,43 +183,44 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="header">
 <h1 class="title">Multivariate Cookbook</h1>
 <p class="author"><em>Ju-Chi Yu and Sheila Meldrum</em></p>
-<p class="date"><em>2019-11-17</em></p>
+<p class="date"><em>2019-12-15</em></p>
 </div>
 <div id="preface" class="section level1 unnumbered">
 <h1>Preface</h1>
-<div id="mulitvariate-analyses-vs.univariate-anlyses" class="section level2">
-<h2><span class="header-section-number">0.1</span> Mulitvariate analyses vs. Univariate anlyses</h2>
-<p>What are multivariate analyses?
-Component-based multivariate methods are primarily data driven exploratory techniques of the underlying structure (i.e. latent structure) of a multivariate data set. These underlying structers are represted by a mixture of the original variables—called components or factors—which explain the most information about your observations.</p>
-<p>When would I use multivariate instead of univariate analyses?
-1. When you want to understand the relationship between multiple (2 +) outcome variables/measurements.</p>
-<p>Note a Principle Component Analysis (PCA) with two variables would be the same as a pearson correlation (r).</p>
-<ol start="2" style="list-style-type: decimal">
-<li>Exploratory data analysis, when you don’t have <em>a priori</em> hypotheses about the structure of your data.</li>
-</ol>
-<p>Example: You are using a large archival data set that includes multiple behavioral measurements (i.e., surveys, performance data, etc).</p>
-<ol start="3" style="list-style-type: decimal">
-<li>Dimention reduction</li>
-</ol>
-<p>Example: Machine learning</p>
-<ol start="4" style="list-style-type: decimal">
-<li>Identify unique patterns across observations</li>
-</ol>
-<p>Example: Eigen faces (maybe), time series data, functional PCA</p>
-<p>-Univariate statistics are most appropriate to use when you have one outcome or measured variable and have planned inferences based on <em>a priori</em> hypotheses.</p>
+<p>Multivariate techniques are becoming an increasingly popular analytical tool given the rise of both open and large datasets. This book hopes to provide conceptual and practical knowledge on how to perform these multivariate techniques.</p>
+<div id="what-are-multivariate-analyses" class="section level2 unnumbered">
+<h2>What are Multivariate Analyses?</h2>
+<p>Multivariate analyses are used when there is more than one outcome (or dependent variables; DVs) as opposed to univariate analyses (e.g., ANOVA or regression) that have only one outcome.</p>
+<p>Component-based multivariate analyses are primarily data driven exploratory techniques of the underlying structure (i.e. latent structure) of a multivariate data set. These underlying structures are represented by a mixture of the original variables—called components or factors—which explains the most information about the observations.</p>
 </div>
-<div id="common-methods-in-multivariate-analysis" class="section level2">
-<h2><span class="header-section-number">0.2</span> Common methods in multivariate analysis</h2>
-<p>Insert table of commonly used mulitvariate analyses and the type of data needed to conduct said analysis
-Rows: one table, two table, and multi-table (2+) analyses for quantitative, qualitative, and mixed data sets
-Columns: Variable/data, Analysis, Results/output</p>
-<p>note we can use this table as a kind of index for people to find the type of analysis they should do based on the type of data they are wanting to analyses</p>
+<div id="multivariate-vs.univariate-analyses" class="section level2 unnumbered">
+<h2>Multivariate vs. Univariate Analyses</h2>
+<div id="when-to-use-univariate-analyses" class="section level3 unnumbered">
+<h3>When to Use Univariate Analyses?</h3>
+<p>Univariate statistics statistics are most appropriate to use when you have one outcome (or dependent variable) and have planned inferences based on <em>a priori</em> hypotheses.</p>
+</div>
+<div id="when-to-use-multivariate-techniques" class="section level3 unnumbered">
+<h3>When to Use Multivariate Techniques?</h3>
+<ol style="list-style-type: decimal">
+<li><p>Understand the relationship between two or more outcome variables/measurements.</p>
+<p>Note: A Principle Component Analysis (PCA) with two variables would be the same as a pearson correlation (<span class="math inline">\(r\)</span>) if the variables are normalized (i.e., z-scored) first.</p></li>
+<li><p>Exploratory data analysis</p>
+<p>When you don’t have <em>a priori</em> hypotheses about the structure of your data.</p>
+<p>Example: You are using a large archival data set that includes multiple behavioral measurements (i.e., surveys, performance data, etc).</p></li>
+<li><p>Dimension reduction</p>
+<p>Example: Machine learning</p></li>
+<li><p>Identify unique patterns across observations</p>
+<p>Example: Eigen faces (maybe), time series data, functional PCA</p></li>
+</ol>
+</div>
+</div>
+<div id="common-multivariate-analyses" class="section level2 unnumbered">
+<h2>Common Multivariate Analyses</h2>
 <table>
-<caption><span id="tab:unnamed-chunk-1">Table 0.1: </span>Comparison between Multivariate and Univariate Analyses</caption>
 <thead>
 <tr class="header">
 <th align="left">Type of Data</th>
-<th align="left">Data Structure</th>
+<th align="left">No. of Tables</th>
 <th align="left">Analysis</th>
 <th align="left">Results</th>
 </tr>
@@ -210,60 +228,83 @@ Columns: Variable/data, Analysis, Results/output</p>
 <tbody>
 <tr class="odd">
 <td align="left">Quantitative</td>
-<td align="left">Single Table</td>
+<td align="left">1</td>
 <td align="left">PCA</td>
-<td align="left">factor scores and column loadings</td>
+<td align="left">Factor Scores, Column Loadings</td>
 </tr>
 <tr class="even">
 <td align="left">Quantitative</td>
-<td align="left">Two Tables</td>
+<td align="left">2</td>
 <td align="left">PLS</td>
 <td align="left">insert</td>
 </tr>
 <tr class="odd">
 <td align="left">Quantitative</td>
-<td align="left">Two Tables</td>
+<td align="left">2</td>
 <td align="left">BADA</td>
 <td align="left">insert</td>
 </tr>
 <tr class="even">
 <td align="left">Quantitative</td>
-<td align="left">Multiple (2+) Tables</td>
+<td align="left">2+</td>
 <td align="left">MFA</td>
 <td align="left">insert</td>
 </tr>
 <tr class="odd">
 <td align="left">Quantitative</td>
-<td align="left">Multiple (2+) TAbles</td>
-<td align="left">Statis</td>
+<td align="left">2+</td>
+<td align="left">STATIS</td>
 <td align="left">insert</td>
 </tr>
 <tr class="even">
 <td align="left">Qualitative</td>
-<td align="left">Single Table</td>
+<td align="left">1</td>
 <td align="left">CA</td>
 <td align="left">insert</td>
 </tr>
 <tr class="odd">
 <td align="left">Qualitative</td>
-<td align="left">Two or More Tables</td>
+<td align="left">2+</td>
 <td align="left">MCA</td>
 <td align="left">insert</td>
 </tr>
 <tr class="even">
 <td align="left">Qualitative</td>
-<td align="left">Two or More Tables</td>
+<td align="left">2+</td>
 <td align="left">PLS-CA</td>
 <td align="left">insert</td>
 </tr>
 <tr class="odd">
 <td align="left">Mixed</td>
-<td align="left">Two or More Tables</td>
+<td align="left">2+</td>
 <td align="left">Mixed PLS</td>
 <td align="left">insert</td>
 </tr>
 </tbody>
 </table>
+</div>
+<div id="what-will-this-book-cover" class="section level2 unnumbered">
+<h2>What Will this Book Cover?</h2>
+<p>Currently, this book will cover PCA with other multivariate analyses being added over time.</p>
+</div>
+<div id="how-will-this-book-be-covered" class="section level2 unnumbered">
+<h2>How Will this Book be Covered?</h2>
+<p>Each multivariate technique will cover:</p>
+<ol style="list-style-type: decimal">
+<li>A conceptual description</li>
+<li>A practical example of the technique using R and the <code>ExPosition</code> library</li>
+<li>What <code>ExPosition</code> is actually doing behing the scenes using R</li>
+<li>A walk-through of the math</li>
+</ol>
+<p>For the practical example of each technique, we will cover:</p>
+<ol style="list-style-type: decimal">
+<li>Pre-processing of the data</li>
+<li>Using descriptive statistics to describe the data</li>
+<li>Performining the multivariate technique</li>
+<li>Determining the number of components</li>
+<li>Visualizing and interpreting the components</li>
+</ol>
+<p>Hopefully, this format will allow individuals that are new to multivariate techniques to grasp both conceptual and pratical information of each technique while allowing more experienced individuals to use this book as a quick reference.</p>
 
 </div>
 </div>
@@ -278,24 +319,24 @@ Columns: Variable/data, Analysis, Results/output</p>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
 <script src="libs/gitbook-2.6.7/js/lunr.js"></script>
-<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
 <script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
-<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
 <script>
 gitbook.require(["gitbook"], function(gitbook) {
 gitbook.start({
 "sharing": {
+"github": false,
 "facebook": true,
 "twitter": true,
+"google": false,
 "linkedin": false,
 "weibo": false,
 "instapaper": false,
 "vk": false,
-"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+"all": ["facebook", "google", "twitter", "linkedin", "weibo", "instapaper"]
 },
 "fontsettings": {
 "theme": "white",
@@ -303,7 +344,7 @@ gitbook.start({
 "size": 2
 },
 "edit": {
-"link": "https://github.com/juchiyu/MultivarBook/edit/master/Rmd/00_index.Rmd",
+"link": "https://github.com/juchiyu/MultivarBook/edit/master/Rmd/00-index.Rmd",
 "text": "Edit"
 },
 "history": {
@@ -323,6 +364,20 @@ gitbook.start({
 });
 </script>
 
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
 </body>
 
 </html>

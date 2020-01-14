@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>2 PCA introduction? | Multivariate Cookbook</title>
+  <title>2 Correspondence Analysis (CA) | Multivariate Cookbook</title>
   <meta name="description" content="This book provides an introduction of simple and advanced multivariate analysis." />
   <meta name="generator" content="bookdown 0.13 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="2 PCA introduction? | Multivariate Cookbook" />
+  <meta property="og:title" content="2 Correspondence Analysis (CA) | Multivariate Cookbook" />
   <meta property="og:type" content="book" />
   
   
@@ -16,7 +16,7 @@
   
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="2 PCA introduction? | Multivariate Cookbook" />
+  <meta name="twitter:title" content="2 Correspondence Analysis (CA) | Multivariate Cookbook" />
   
   <meta name="twitter:description" content="This book provides an introduction of simple and advanced multivariate analysis." />
   
@@ -24,7 +24,7 @@
 <meta name="author" content="Ju-Chi Yu and Sheila Meldrum" />
 
 
-<meta name="date" content="2019-12-14" />
+<meta name="date" content="2019-12-15" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -32,7 +32,7 @@
   
   
 <link rel="prev" href="principal-component-analysis-pca.html"/>
-<link rel="next" href="svd.html"/>
+
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
@@ -127,25 +127,41 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="" data-path="preface.html"><a href="preface.html"><i class="fa fa-check"></i>Preface</a><ul>
 <li class="chapter" data-level="" data-path="preface.html"><a href="preface.html#what-are-multivariate-analyses"><i class="fa fa-check"></i>What are Multivariate Analyses?</a></li>
 <li class="chapter" data-level="" data-path="preface.html"><a href="preface.html#multivariate-vs.univariate-analyses"><i class="fa fa-check"></i>Multivariate vs. Univariate Analyses</a><ul>
-<li class="chapter" data-level="" data-path="preface.html"><a href="preface.html#when-would-i-use-multivariate-techniques"><i class="fa fa-check"></i>When Would I Use Multivariate Techniques?</a></li>
-<li class="chapter" data-level="" data-path="preface.html"><a href="preface.html#when-would-i-use-univariate-analyses"><i class="fa fa-check"></i>When Would I Use Univariate Analyses?</a></li>
+<li class="chapter" data-level="" data-path="preface.html"><a href="preface.html#when-to-use-univariate-analyses"><i class="fa fa-check"></i>When to Use Univariate Analyses?</a></li>
+<li class="chapter" data-level="" data-path="preface.html"><a href="preface.html#when-to-use-multivariate-techniques"><i class="fa fa-check"></i>When to Use Multivariate Techniques?</a></li>
 </ul></li>
-<li class="chapter" data-level="" data-path="preface.html"><a href="preface.html#common-methods-in-multivariate-analyses"><i class="fa fa-check"></i>Common Methods in Multivariate Analyses</a></li>
+<li class="chapter" data-level="" data-path="preface.html"><a href="preface.html#common-multivariate-analyses"><i class="fa fa-check"></i>Common Multivariate Analyses</a></li>
+<li class="chapter" data-level="" data-path="preface.html"><a href="preface.html#what-will-this-book-cover"><i class="fa fa-check"></i>What Will this Book Cover?</a></li>
+<li class="chapter" data-level="" data-path="preface.html"><a href="preface.html#how-will-this-book-be-covered"><i class="fa fa-check"></i>How Will this Book be Covered?</a></li>
 </ul></li>
-<li class="chapter" data-level="1" data-path="principal-component-analysis-pca.html"><a href="principal-component-analysis-pca.html"><i class="fa fa-check"></i><b>1</b> Principal Component Analysis (PCA)</a></li>
-<li class="chapter" data-level="2" data-path="pca-intro.html"><a href="pca-intro.html"><i class="fa fa-check"></i><b>2</b> PCA introduction?</a><ul>
-<li class="chapter" data-level="2.1" data-path="pca-intro.html"><a href="pca-intro.html#when-should-you-do-a-pca"><i class="fa fa-check"></i><b>2.1</b> When should you do a PCA?</a></li>
-<li class="chapter" data-level="2.2" data-path="pca-intro.html"><a href="pca-intro.html#how-pca-is-different-from-factor-analysis-and-item-analysis"><i class="fa fa-check"></i><b>2.2</b> How PCA is different from factor analysis and item analysis?</a></li>
-<li class="chapter" data-level="2.3" data-path="pca-intro.html"><a href="pca-intro.html#what-does-pca-do"><i class="fa fa-check"></i><b>2.3</b> What does PCA do?</a></li>
-<li class="chapter" data-level="2.4" data-path="pca-intro.html"><a href="pca-intro.html#what-are-expected-from-pca"><i class="fa fa-check"></i><b>2.4</b> What are expected from PCA?</a></li>
-<li class="chapter" data-level="2.5" data-path="pca-intro.html"><a href="pca-intro.html#how-do-i-do-pca"><i class="fa fa-check"></i><b>2.5</b> How do I do PCA?</a></li>
-<li class="chapter" data-level="2.6" data-path="pca-intro.html"><a href="pca-intro.html#show-me-the-math"><i class="fa fa-check"></i><b>2.6</b> Show me the math</a></li>
+<li class="chapter" data-level="1" data-path="principal-component-analysis-pca.html"><a href="principal-component-analysis-pca.html"><i class="fa fa-check"></i><b>1</b> Principal Component Analysis (PCA)</a><ul>
+<li class="chapter" data-level="1.1" data-path="principal-component-analysis-pca.html"><a href="principal-component-analysis-pca.html#description"><i class="fa fa-check"></i><b>1.1</b> Description</a><ul>
+<li class="chapter" data-level="1.1.1" data-path="principal-component-analysis-pca.html"><a href="principal-component-analysis-pca.html#pca_intro"><i class="fa fa-check"></i><b>1.1.1</b> What is PCA?</a></li>
+<li class="chapter" data-level="1.1.2" data-path="principal-component-analysis-pca.html"><a href="principal-component-analysis-pca.html#singular-value-decomposition-svd"><i class="fa fa-check"></i><b>1.1.2</b> Singular Value Decomposition (SVD)</a></li>
+<li class="chapter" data-level="1.1.3" data-path="principal-component-analysis-pca.html"><a href="principal-component-analysis-pca.html#how-to-interpret-these-matrices"><i class="fa fa-check"></i><b>1.1.3</b> How to Interpret these Matrices?</a></li>
+<li class="chapter" data-level="1.1.4" data-path="principal-component-analysis-pca.html"><a href="principal-component-analysis-pca.html#what-are-the-assumptions-of-pca"><i class="fa fa-check"></i><b>1.1.4</b> What are the Assumptions of PCA?</a></li>
 </ul></li>
-<li class="chapter" data-level="3" data-path="svd.html"><a href="svd.html"><i class="fa fa-check"></i><b>3</b> Singular value decomposition</a></li>
-<li class="chapter" data-level="4" data-path="pca-example.html"><a href="pca-example.html"><i class="fa fa-check"></i><b>4</b> PCA example</a><ul>
-<li class="chapter" data-level="4.1" data-path="pca-example.html"><a href="pca-example.html#example-data"><i class="fa fa-check"></i><b>4.1</b> Example data</a><ul>
-<li class="chapter" data-level="4.1.1" data-path="pca-example.html"><a href="pca-example.html#design-of-the-data"><i class="fa fa-check"></i><b>4.1.1</b> Design of the data</a></li>
+<li class="chapter" data-level="1.2" data-path="principal-component-analysis-pca.html"><a href="principal-component-analysis-pca.html#example"><i class="fa fa-check"></i><b>1.2</b> Example</a><ul>
+<li class="chapter" data-level="1.2.1" data-path="principal-component-analysis-pca.html"><a href="principal-component-analysis-pca.html#packages"><i class="fa fa-check"></i><b>1.2.1</b> Packages</a></li>
+<li class="chapter" data-level="1.2.2" data-path="principal-component-analysis-pca.html"><a href="principal-component-analysis-pca.html#data"><i class="fa fa-check"></i><b>1.2.2</b> Data</a></li>
+<li class="chapter" data-level="1.2.3" data-path="principal-component-analysis-pca.html"><a href="principal-component-analysis-pca.html#data-pre-processing"><i class="fa fa-check"></i><b>1.2.3</b> Data Pre-Processing</a></li>
+<li class="chapter" data-level="1.2.4" data-path="principal-component-analysis-pca.html"><a href="principal-component-analysis-pca.html#descriptive-statistics"><i class="fa fa-check"></i><b>1.2.4</b> Descriptive Statistics</a></li>
+<li class="chapter" data-level="1.2.5" data-path="principal-component-analysis-pca.html"><a href="principal-component-analysis-pca.html#analysis"><i class="fa fa-check"></i><b>1.2.5</b> Analysis</a></li>
+<li class="chapter" data-level="1.2.6" data-path="principal-component-analysis-pca.html"><a href="principal-component-analysis-pca.html#number-of-components"><i class="fa fa-check"></i><b>1.2.6</b> Number of Components</a></li>
+<li class="chapter" data-level="1.2.7" data-path="principal-component-analysis-pca.html"><a href="principal-component-analysis-pca.html#visualize-and-interpret-components"><i class="fa fa-check"></i><b>1.2.7</b> Visualize and Interpret Components</a></li>
 </ul></li>
+<li class="chapter" data-level="1.3" data-path="principal-component-analysis-pca.html"><a href="principal-component-analysis-pca.html#behind-the-scenes"><i class="fa fa-check"></i><b>1.3</b> Behind-the-Scenes</a><ul>
+<li class="chapter" data-level="1.3.1" data-path="principal-component-analysis-pca.html"><a href="principal-component-analysis-pca.html#svd"><i class="fa fa-check"></i><b>1.3.1</b> SVD</a></li>
+<li class="chapter" data-level="1.3.2" data-path="principal-component-analysis-pca.html"><a href="principal-component-analysis-pca.html#svd-results"><i class="fa fa-check"></i><b>1.3.2</b> SVD Results</a></li>
+<li class="chapter" data-level="1.3.3" data-path="principal-component-analysis-pca.html"><a href="principal-component-analysis-pca.html#projections"><i class="fa fa-check"></i><b>1.3.3</b> Projections</a></li>
+</ul></li>
+<li class="chapter" data-level="1.4" data-path="principal-component-analysis-pca.html"><a href="principal-component-analysis-pca.html#math-walk-through"><i class="fa fa-check"></i><b>1.4</b> Math Walk-Through</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="correspondence-analysis-ca.html"><a href="correspondence-analysis-ca.html"><i class="fa fa-check"></i><b>2</b> Correspondence Analysis (CA)</a><ul>
+<li class="chapter" data-level="2.1" data-path="correspondence-analysis-ca.html"><a href="correspondence-analysis-ca.html#description-1"><i class="fa fa-check"></i><b>2.1</b> Description</a></li>
+<li class="chapter" data-level="2.2" data-path="correspondence-analysis-ca.html"><a href="correspondence-analysis-ca.html#example-1"><i class="fa fa-check"></i><b>2.2</b> Example</a></li>
+<li class="chapter" data-level="2.3" data-path="correspondence-analysis-ca.html"><a href="correspondence-analysis-ca.html#behind-the-scenes-1"><i class="fa fa-check"></i><b>2.3</b> Behind-the-Scenes</a></li>
+<li class="chapter" data-level="2.4" data-path="correspondence-analysis-ca.html"><a href="correspondence-analysis-ca.html#math-walk-through-1"><i class="fa fa-check"></i><b>2.4</b> Math Walk-Through</a></li>
 </ul></li>
 </ul>
 
@@ -164,28 +180,19 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="pca_intro" class="section level1">
-<h1><span class="header-section-number">2</span> PCA introduction?</h1>
-<div id="when-should-you-do-a-pca" class="section level2">
-<h2><span class="header-section-number">2.1</span> When should you do a PCA?</h2>
+<div id="correspondence-analysis-ca" class="section level1">
+<h1><span class="header-section-number">2</span> Correspondence Analysis (CA)</h1>
+<div id="description-1" class="section level2">
+<h2><span class="header-section-number">2.1</span> Description</h2>
 </div>
-<div id="how-pca-is-different-from-factor-analysis-and-item-analysis" class="section level2">
-<h2><span class="header-section-number">2.2</span> How PCA is different from factor analysis and item analysis?</h2>
+<div id="example-1" class="section level2">
+<h2><span class="header-section-number">2.2</span> Example</h2>
 </div>
-<div id="what-does-pca-do" class="section level2">
-<h2><span class="header-section-number">2.3</span> What does PCA do?</h2>
-<p>Principal component analysis (PCA) is used to analyze one table of quantitative data. PCA mixes the input variables to give new variables, called principal components (or factors, or latent variables). The first principal component is the best fit of line that maximizes the inertia—variance in 3-D (and beyond) space—of the cloud of data points. Subsequent components are defined as orthogonal to previous components, and maximize the remaining inertia.</p>
-<p>PCA gives one map for the rows (called factor scores), and one map for the columns (called loadings). These 2 maps are related, because they both are described by the same components. However, these 2 maps project different kinds of information onto the components, and so they are <em>interpreted differently</em>. Factor scores are the coordinates of the row observations. They are interpreted by the distances between them, and their distance from the origin. Loadings describe the column variables. Loadings are interpreted by the angle between them, and their distance from the origin.</p>
-<p>The distance from the origin is important in both maps, because squared distance from the mean is inertia (variance, information; see sum of squares as in ANOVA/regression). Because of the Pythagorean Theorem, the total information contributed by a data point (its squared distance to the origin) is also equal to the sum of its squared factor scores.</p>
+<div id="behind-the-scenes-1" class="section level2">
+<h2><span class="header-section-number">2.3</span> Behind-the-Scenes</h2>
 </div>
-<div id="what-are-expected-from-pca" class="section level2">
-<h2><span class="header-section-number">2.4</span> What are expected from PCA?</h2>
-</div>
-<div id="how-do-i-do-pca" class="section level2">
-<h2><span class="header-section-number">2.5</span> How do I do PCA?</h2>
-</div>
-<div id="show-me-the-math" class="section level2">
-<h2><span class="header-section-number">2.6</span> Show me the math</h2>
+<div id="math-walk-through-1" class="section level2">
+<h2><span class="header-section-number">2.4</span> Math Walk-Through</h2>
 
 </div>
 </div>
@@ -194,8 +201,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           </div>
         </div>
       </div>
-<a href="principal-component-analysis-pca.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="svd.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="principal-component-analysis-pca.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
@@ -225,7 +232,7 @@ gitbook.start({
 "size": 2
 },
 "edit": {
-"link": "https://github.com/juchiyu/MultivarBook/edit/master/Rmd/01_Ch1.1_PCAintro.Rmd",
+"link": "https://github.com/juchiyu/MultivarBook/edit/master/Rmd/02-ca.Rmd",
 "text": "Edit"
 },
 "history": {

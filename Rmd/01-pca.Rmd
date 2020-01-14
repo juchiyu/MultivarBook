@@ -1,0 +1,120 @@
+# Principal Component Analysis (PCA)
+
+## Description
+
+### What is PCA? {#pca_intro}
+
+Principal component analysis (PCA) is used to analyze one table of quantitative data. PCA creates new variables, which are called principal components (or factors, or latent variables) from the input variables. The first principal component is the best fit of line that explains the most amount of variability across all of the variables. Subsequent components are defined as orthogonal to previous components, and explains the next most amount of variability across all of the variables.
+
+### Singular Value Decomposition (SVD)
+
+PCA creates these principal components using singular value decompisition (SVD). SVD is one of several decomposition methods (e.g., [insert other methods here]). SVD decomposes the data into three matrices (or maps).
+
+SVD gives one map for the rows of the table called factor scores and one map for the columns of the table called loadings. These two maps are related because they both are described by the same principal components. The third map gives the error between each component's predicted data point and the actual data point called singular values.
+
+### How to Interpret these Matrices?
+
+However, these 2 maps project different kinds of information onto the components, and so they are *interpreted differently*. 
+
+Factor scores are the coordinates of the row observations. They are interpreted by the distances between them, and their distance from the origin. 
+
+Loadings describe the column variables. Loadings are interpreted by the angle between them, and their distance from the origin. 
+
+The distance from the origin is important in both maps, because squared distance from the mean is inertia (variance, information; see sum of squares as in ANOVA/regression). Because of the Pythagorean Theorem, the total information contributed by a data point (its squared distance to the origin) is also equal to the sum of its squared factor scores. 
+
+### What are the Assumptions of PCA?
+
+## Example
+
+Let's say we are interested in creating unique components from a dataset that contains the length and number of definitions of a list of 20 words.
+
+### Packages
+
+First, let's load the package `ExPosition` that contains both the data and a function to perform PCA.
+
+```{r}
+library(ExPosition)
+```
+
+### Data
+```{r}
+data(words)            # load words data to the environment
+data <- words$data     # set the words data as data
+data                   # view data
+```
+
+This single table contains 20 rows of words and 2 columns that contain information about the length and number of definitions of each word. 
+
+### Data Pre-Processing
+```{r}
+
+```
+
+### Descriptive Statistics
+```{r}
+psych::describe(data) %>% select(n, mean, median, min, max, sd, se, skew, kurtosis)
+cor(data)
+```
+
+### Analysis
+
+To perform PCA, we can use the `epPCA()` function.
+
+```{r}
+model <- epPCA(data, graphs = F)
+model$ExPosition.Data
+```
+
+### Number of Components
+
+### Visualize and Interpret Components
+
+#### Factor Scores
+
+#### Loadings
+
+## Behind-the-Scenes
+
+The single table is first decomposed using the `svd()` function.
+
+### SVD
+
+```{r}
+model <- svd(data)
+```
+
+### SVD Results
+
+The decomposition of the single table using SVD results in the three matrices: 
+
+1. Singular values
+2. Left Singular
+3. Right Singular
+
+#### Singular Values
+```{r}
+d <- model$d
+d
+```
+
+#### Left Singular
+```{r}
+u <- model$u
+u
+```
+
+#### Right Singular
+```{r}
+v <- model$v
+v
+```
+
+### Projections
+
+#### Inertia
+
+#### Factor Scores
+
+#### Loadings
+
+## Math Walk-Through
