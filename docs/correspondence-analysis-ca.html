@@ -1,14 +1,14 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<html lang="" xml:lang="">
 <head>
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>2 Correspondence Analysis (CA) | Multivariate Cookbook</title>
+  <title>Chapter 4 Correspondence Analysis (CA) | Multivariate Cookbook</title>
   <meta name="description" content="This book provides an introduction of simple and advanced multivariate analysis." />
-  <meta name="generator" content="bookdown 0.13 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.17 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="2 Correspondence Analysis (CA) | Multivariate Cookbook" />
+  <meta property="og:title" content="Chapter 4 Correspondence Analysis (CA) | Multivariate Cookbook" />
   <meta property="og:type" content="book" />
   
   
@@ -16,7 +16,7 @@
   
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="2 Correspondence Analysis (CA) | Multivariate Cookbook" />
+  <meta name="twitter:title" content="Chapter 4 Correspondence Analysis (CA) | Multivariate Cookbook" />
   
   <meta name="twitter:description" content="This book provides an introduction of simple and advanced multivariate analysis." />
   
@@ -24,7 +24,7 @@
 <meta name="author" content="Ju-Chi Yu and Sheila Meldrum" />
 
 
-<meta name="date" content="2019-12-15" />
+<meta name="date" content="2020-02-04" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -32,7 +32,7 @@
   
   
 <link rel="prev" href="principal-component-analysis-pca.html"/>
-
+<link rel="next" href="partial-least-squares-pls.html"/>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
@@ -40,6 +40,9 @@
 <link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
 
 
 
@@ -77,41 +80,41 @@ pre.numberSource a.sourceLine::before
   }
 pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
 div.sourceCode
-  {  }
+  { background-color: #f8f8f8; }
 @media screen {
 a.sourceLine::before { text-decoration: underline; }
 }
-code span.al { color: #ff0000; font-weight: bold; } /* Alert */
-code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
-code span.at { color: #7d9029; } /* Attribute */
-code span.bn { color: #40a070; } /* BaseN */
-code span.bu { } /* BuiltIn */
-code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
-code span.ch { color: #4070a0; } /* Char */
-code span.cn { color: #880000; } /* Constant */
-code span.co { color: #60a0b0; font-style: italic; } /* Comment */
-code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
-code span.do { color: #ba2121; font-style: italic; } /* Documentation */
-code span.dt { color: #902000; } /* DataType */
-code span.dv { color: #40a070; } /* DecVal */
-code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.al { color: #ef2929; } /* Alert */
+code span.an { color: #8f5902; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #c4a000; } /* Attribute */
+code span.bn { color: #0000cf; } /* BaseN */
+code span.cf { color: #204a87; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4e9a06; } /* Char */
+code span.cn { color: #000000; } /* Constant */
+code span.co { color: #8f5902; font-style: italic; } /* Comment */
+code span.cv { color: #8f5902; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #8f5902; font-weight: bold; font-style: italic; } /* Documentation */
+code span.dt { color: #204a87; } /* DataType */
+code span.dv { color: #0000cf; } /* DecVal */
+code span.er { color: #a40000; font-weight: bold; } /* Error */
 code span.ex { } /* Extension */
-code span.fl { color: #40a070; } /* Float */
-code span.fu { color: #06287e; } /* Function */
+code span.fl { color: #0000cf; } /* Float */
+code span.fu { color: #000000; } /* Function */
 code span.im { } /* Import */
-code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
-code span.kw { color: #007020; font-weight: bold; } /* Keyword */
-code span.op { color: #666666; } /* Operator */
-code span.ot { color: #007020; } /* Other */
-code span.pp { color: #bc7a00; } /* Preprocessor */
-code span.sc { color: #4070a0; } /* SpecialChar */
-code span.ss { color: #bb6688; } /* SpecialString */
-code span.st { color: #4070a0; } /* String */
-code span.va { color: #19177c; } /* Variable */
-code span.vs { color: #4070a0; } /* VerbatimString */
-code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+code span.in { color: #8f5902; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #204a87; font-weight: bold; } /* Keyword */
+code span.op { color: #ce5c00; font-weight: bold; } /* Operator */
+code span.ot { color: #8f5902; } /* Other */
+code span.pp { color: #8f5902; font-style: italic; } /* Preprocessor */
+code span.sc { color: #000000; } /* SpecialChar */
+code span.ss { color: #4e9a06; } /* SpecialString */
+code span.st { color: #4e9a06; } /* String */
+code span.va { color: #000000; } /* Variable */
+code span.vs { color: #4e9a06; } /* VerbatimString */
+code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warning */
 </style>
 
+<link rel="stylesheet" href="style.css" type="text/css" />
 </head>
 
 <body>
@@ -124,6 +127,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
       <nav role="navigation">
 
 <ul class="summary">
+<li><a href="./">Table of Contents</a></li>
+
+<li class="divider"></li>
 <li class="chapter" data-level="" data-path="preface.html"><a href="preface.html"><i class="fa fa-check"></i>Preface</a><ul>
 <li class="chapter" data-level="" data-path="preface.html"><a href="preface.html#what-are-multivariate-analyses"><i class="fa fa-check"></i>What are Multivariate Analyses?</a></li>
 <li class="chapter" data-level="" data-path="preface.html"><a href="preface.html#multivariate-vs.univariate-analyses"><i class="fa fa-check"></i>Multivariate vs. Univariate Analyses</a><ul>
@@ -134,35 +140,70 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="" data-path="preface.html"><a href="preface.html#what-will-this-book-cover"><i class="fa fa-check"></i>What Will this Book Cover?</a></li>
 <li class="chapter" data-level="" data-path="preface.html"><a href="preface.html#how-will-this-book-be-covered"><i class="fa fa-check"></i>How Will this Book be Covered?</a></li>
 </ul></li>
-<li class="chapter" data-level="1" data-path="principal-component-analysis-pca.html"><a href="principal-component-analysis-pca.html"><i class="fa fa-check"></i><b>1</b> Principal Component Analysis (PCA)</a><ul>
-<li class="chapter" data-level="1.1" data-path="principal-component-analysis-pca.html"><a href="principal-component-analysis-pca.html#description"><i class="fa fa-check"></i><b>1.1</b> Description</a><ul>
-<li class="chapter" data-level="1.1.1" data-path="principal-component-analysis-pca.html"><a href="principal-component-analysis-pca.html#pca_intro"><i class="fa fa-check"></i><b>1.1.1</b> What is PCA?</a></li>
-<li class="chapter" data-level="1.1.2" data-path="principal-component-analysis-pca.html"><a href="principal-component-analysis-pca.html#singular-value-decomposition-svd"><i class="fa fa-check"></i><b>1.1.2</b> Singular Value Decomposition (SVD)</a></li>
-<li class="chapter" data-level="1.1.3" data-path="principal-component-analysis-pca.html"><a href="principal-component-analysis-pca.html#how-to-interpret-these-matrices"><i class="fa fa-check"></i><b>1.1.3</b> How to Interpret these Matrices?</a></li>
-<li class="chapter" data-level="1.1.4" data-path="principal-component-analysis-pca.html"><a href="principal-component-analysis-pca.html#what-are-the-assumptions-of-pca"><i class="fa fa-check"></i><b>1.1.4</b> What are the Assumptions of PCA?</a></li>
+<li class="chapter" data-level="1" data-path="packages.html"><a href="packages.html"><i class="fa fa-check"></i><b>1</b> Packages</a><ul>
+<li class="chapter" data-level="1.1" data-path="packages.html"><a href="packages.html#functions"><i class="fa fa-check"></i><b>1.1</b> Functions</a><ul>
+<li class="chapter" data-level="1.1.1" data-path="packages.html"><a href="packages.html#plot_eig"><i class="fa fa-check"></i><b>1.1.1</b> plot_eig()</a></li>
+<li class="chapter" data-level="1.1.2" data-path="packages.html"><a href="packages.html#plot_pairs_all"><i class="fa fa-check"></i><b>1.1.2</b> plot_pairs_all()</a></li>
+<li class="chapter" data-level="1.1.3" data-path="packages.html"><a href="packages.html#plot_contributions_all"><i class="fa fa-check"></i><b>1.1.3</b> plot_contributions_all()</a></li>
+<li class="chapter" data-level="1.1.4" data-path="packages.html"><a href="packages.html#plot_latents_all"><i class="fa fa-check"></i><b>1.1.4</b> plot_latents_all()</a></li>
 </ul></li>
-<li class="chapter" data-level="1.2" data-path="principal-component-analysis-pca.html"><a href="principal-component-analysis-pca.html#example"><i class="fa fa-check"></i><b>1.2</b> Example</a><ul>
-<li class="chapter" data-level="1.2.1" data-path="principal-component-analysis-pca.html"><a href="principal-component-analysis-pca.html#packages"><i class="fa fa-check"></i><b>1.2.1</b> Packages</a></li>
-<li class="chapter" data-level="1.2.2" data-path="principal-component-analysis-pca.html"><a href="principal-component-analysis-pca.html#data"><i class="fa fa-check"></i><b>1.2.2</b> Data</a></li>
-<li class="chapter" data-level="1.2.3" data-path="principal-component-analysis-pca.html"><a href="principal-component-analysis-pca.html#data-pre-processing"><i class="fa fa-check"></i><b>1.2.3</b> Data Pre-Processing</a></li>
-<li class="chapter" data-level="1.2.4" data-path="principal-component-analysis-pca.html"><a href="principal-component-analysis-pca.html#descriptive-statistics"><i class="fa fa-check"></i><b>1.2.4</b> Descriptive Statistics</a></li>
-<li class="chapter" data-level="1.2.5" data-path="principal-component-analysis-pca.html"><a href="principal-component-analysis-pca.html#analysis"><i class="fa fa-check"></i><b>1.2.5</b> Analysis</a></li>
-<li class="chapter" data-level="1.2.6" data-path="principal-component-analysis-pca.html"><a href="principal-component-analysis-pca.html#number-of-components"><i class="fa fa-check"></i><b>1.2.6</b> Number of Components</a></li>
-<li class="chapter" data-level="1.2.7" data-path="principal-component-analysis-pca.html"><a href="principal-component-analysis-pca.html#visualize-and-interpret-components"><i class="fa fa-check"></i><b>1.2.7</b> Visualize and Interpret Components</a></li>
 </ul></li>
-<li class="chapter" data-level="1.3" data-path="principal-component-analysis-pca.html"><a href="principal-component-analysis-pca.html#behind-the-scenes"><i class="fa fa-check"></i><b>1.3</b> Behind-the-Scenes</a><ul>
-<li class="chapter" data-level="1.3.1" data-path="principal-component-analysis-pca.html"><a href="principal-component-analysis-pca.html#svd"><i class="fa fa-check"></i><b>1.3.1</b> SVD</a></li>
-<li class="chapter" data-level="1.3.2" data-path="principal-component-analysis-pca.html"><a href="principal-component-analysis-pca.html#svd-results"><i class="fa fa-check"></i><b>1.3.2</b> SVD Results</a></li>
-<li class="chapter" data-level="1.3.3" data-path="principal-component-analysis-pca.html"><a href="principal-component-analysis-pca.html#projections"><i class="fa fa-check"></i><b>1.3.3</b> Projections</a></li>
+<li class="chapter" data-level="2" data-path="datasets.html"><a href="datasets.html"><i class="fa fa-check"></i><b>2</b> Datasets</a><ul>
+<li class="chapter" data-level="2.1" data-path="datasets.html"><a href="datasets.html#wine"><i class="fa fa-check"></i><b>2.1</b> Wine</a></li>
+<li class="chapter" data-level="2.2" data-path="datasets.html"><a href="datasets.html#ucla"><i class="fa fa-check"></i><b>2.2</b> UCLA</a></li>
 </ul></li>
-<li class="chapter" data-level="1.4" data-path="principal-component-analysis-pca.html"><a href="principal-component-analysis-pca.html#math-walk-through"><i class="fa fa-check"></i><b>1.4</b> Math Walk-Through</a></li>
+<li class="chapter" data-level="3" data-path="principal-component-analysis-pca.html"><a href="principal-component-analysis-pca.html"><i class="fa fa-check"></i><b>3</b> Principal Component Analysis (PCA)</a><ul>
+<li class="chapter" data-level="3.1" data-path="principal-component-analysis-pca.html"><a href="principal-component-analysis-pca.html#description"><i class="fa fa-check"></i><b>3.1</b> Description</a><ul>
+<li class="chapter" data-level="3.1.1" data-path="principal-component-analysis-pca.html"><a href="principal-component-analysis-pca.html#pca_intro"><i class="fa fa-check"></i><b>3.1.1</b> What is PCA?</a></li>
+<li class="chapter" data-level="3.1.2" data-path="principal-component-analysis-pca.html"><a href="principal-component-analysis-pca.html#singular-value-decomposition-svd"><i class="fa fa-check"></i><b>3.1.2</b> Singular Value Decomposition (SVD)</a></li>
+<li class="chapter" data-level="3.1.3" data-path="principal-component-analysis-pca.html"><a href="principal-component-analysis-pca.html#how-to-interpret-these-matrices"><i class="fa fa-check"></i><b>3.1.3</b> How to Interpret these Matrices?</a></li>
+<li class="chapter" data-level="3.1.4" data-path="principal-component-analysis-pca.html"><a href="principal-component-analysis-pca.html#what-are-the-assumptions-of-pca"><i class="fa fa-check"></i><b>3.1.4</b> What are the Assumptions of PCA?</a></li>
 </ul></li>
-<li class="chapter" data-level="2" data-path="correspondence-analysis-ca.html"><a href="correspondence-analysis-ca.html"><i class="fa fa-check"></i><b>2</b> Correspondence Analysis (CA)</a><ul>
-<li class="chapter" data-level="2.1" data-path="correspondence-analysis-ca.html"><a href="correspondence-analysis-ca.html#description-1"><i class="fa fa-check"></i><b>2.1</b> Description</a></li>
-<li class="chapter" data-level="2.2" data-path="correspondence-analysis-ca.html"><a href="correspondence-analysis-ca.html#example-1"><i class="fa fa-check"></i><b>2.2</b> Example</a></li>
-<li class="chapter" data-level="2.3" data-path="correspondence-analysis-ca.html"><a href="correspondence-analysis-ca.html#behind-the-scenes-1"><i class="fa fa-check"></i><b>2.3</b> Behind-the-Scenes</a></li>
-<li class="chapter" data-level="2.4" data-path="correspondence-analysis-ca.html"><a href="correspondence-analysis-ca.html#math-walk-through-1"><i class="fa fa-check"></i><b>2.4</b> Math Walk-Through</a></li>
+<li class="chapter" data-level="3.2" data-path="principal-component-analysis-pca.html"><a href="principal-component-analysis-pca.html#example"><i class="fa fa-check"></i><b>3.2</b> Example</a><ul>
+<li class="chapter" data-level="3.2.1" data-path="principal-component-analysis-pca.html"><a href="principal-component-analysis-pca.html#packages-1"><i class="fa fa-check"></i><b>3.2.1</b> Packages</a></li>
+<li class="chapter" data-level="3.2.2" data-path="principal-component-analysis-pca.html"><a href="principal-component-analysis-pca.html#data-pre-processing"><i class="fa fa-check"></i><b>3.2.2</b> Data Pre-Processing</a></li>
+<li class="chapter" data-level="3.2.3" data-path="principal-component-analysis-pca.html"><a href="principal-component-analysis-pca.html#descriptive-statistics"><i class="fa fa-check"></i><b>3.2.3</b> Descriptive Statistics</a></li>
+<li class="chapter" data-level="3.2.4" data-path="principal-component-analysis-pca.html"><a href="principal-component-analysis-pca.html#analysis"><i class="fa fa-check"></i><b>3.2.4</b> Analysis</a></li>
+<li class="chapter" data-level="3.2.5" data-path="principal-component-analysis-pca.html"><a href="principal-component-analysis-pca.html#number-of-components"><i class="fa fa-check"></i><b>3.2.5</b> Number of Components</a></li>
+<li class="chapter" data-level="3.2.6" data-path="principal-component-analysis-pca.html"><a href="principal-component-analysis-pca.html#visualize-and-interpret-components"><i class="fa fa-check"></i><b>3.2.6</b> Visualize and Interpret Components</a></li>
 </ul></li>
+<li class="chapter" data-level="3.3" data-path="principal-component-analysis-pca.html"><a href="principal-component-analysis-pca.html#behind-the-scenes"><i class="fa fa-check"></i><b>3.3</b> Behind-the-Scenes</a><ul>
+<li class="chapter" data-level="3.3.1" data-path="principal-component-analysis-pca.html"><a href="principal-component-analysis-pca.html#svd"><i class="fa fa-check"></i><b>3.3.1</b> SVD</a></li>
+<li class="chapter" data-level="3.3.2" data-path="principal-component-analysis-pca.html"><a href="principal-component-analysis-pca.html#svd-results"><i class="fa fa-check"></i><b>3.3.2</b> SVD Results</a></li>
+<li class="chapter" data-level="3.3.3" data-path="principal-component-analysis-pca.html"><a href="principal-component-analysis-pca.html#projections"><i class="fa fa-check"></i><b>3.3.3</b> Projections</a></li>
+</ul></li>
+<li class="chapter" data-level="3.4" data-path="principal-component-analysis-pca.html"><a href="principal-component-analysis-pca.html#math-walk-through"><i class="fa fa-check"></i><b>3.4</b> Math Walk-Through</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="correspondence-analysis-ca.html"><a href="correspondence-analysis-ca.html"><i class="fa fa-check"></i><b>4</b> Correspondence Analysis (CA)</a><ul>
+<li class="chapter" data-level="4.1" data-path="correspondence-analysis-ca.html"><a href="correspondence-analysis-ca.html#description-1"><i class="fa fa-check"></i><b>4.1</b> Description</a></li>
+<li class="chapter" data-level="4.2" data-path="correspondence-analysis-ca.html"><a href="correspondence-analysis-ca.html#example-1"><i class="fa fa-check"></i><b>4.2</b> Example</a></li>
+<li class="chapter" data-level="4.3" data-path="correspondence-analysis-ca.html"><a href="correspondence-analysis-ca.html#behind-the-scenes-1"><i class="fa fa-check"></i><b>4.3</b> Behind-the-Scenes</a></li>
+<li class="chapter" data-level="4.4" data-path="correspondence-analysis-ca.html"><a href="correspondence-analysis-ca.html#math-walk-through-1"><i class="fa fa-check"></i><b>4.4</b> Math Walk-Through</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="partial-least-squares-pls.html"><a href="partial-least-squares-pls.html"><i class="fa fa-check"></i><b>5</b> Partial Least Squares (PLS)</a><ul>
+<li class="chapter" data-level="5.1" data-path="partial-least-squares-pls.html"><a href="partial-least-squares-pls.html#description-2"><i class="fa fa-check"></i><b>5.1</b> Description</a><ul>
+<li class="chapter" data-level="5.1.1" data-path="partial-least-squares-pls.html"><a href="partial-least-squares-pls.html#what-is-pls"><i class="fa fa-check"></i><b>5.1.1</b> What is PLS?</a></li>
+</ul></li>
+<li class="chapter" data-level="5.2" data-path="partial-least-squares-pls.html"><a href="partial-least-squares-pls.html#example-2"><i class="fa fa-check"></i><b>5.2</b> Example</a><ul>
+<li class="chapter" data-level="5.2.1" data-path="partial-least-squares-pls.html"><a href="partial-least-squares-pls.html#data"><i class="fa fa-check"></i><b>5.2.1</b> Data</a></li>
+<li class="chapter" data-level="5.2.2" data-path="partial-least-squares-pls.html"><a href="partial-least-squares-pls.html#analysis-1"><i class="fa fa-check"></i><b>5.2.2</b> Analysis</a></li>
+<li class="chapter" data-level="5.2.3" data-path="partial-least-squares-pls.html"><a href="partial-least-squares-pls.html#eigenvalue"><i class="fa fa-check"></i><b>5.2.3</b> Eigenvalue</a></li>
+<li class="chapter" data-level="5.2.4" data-path="partial-least-squares-pls.html"><a href="partial-least-squares-pls.html#factor-scores-2"><i class="fa fa-check"></i><b>5.2.4</b> Factor Scores</a></li>
+<li class="chapter" data-level="5.2.5" data-path="partial-least-squares-pls.html"><a href="partial-least-squares-pls.html#latent-scores"><i class="fa fa-check"></i><b>5.2.5</b> Latent Scores</a></li>
+</ul></li>
+<li class="chapter" data-level="5.3" data-path="partial-least-squares-pls.html"><a href="partial-least-squares-pls.html#behind-the-scenes-2"><i class="fa fa-check"></i><b>5.3</b> Behind-the-Scenes</a><ul>
+<li class="chapter" data-level="5.3.1" data-path="partial-least-squares-pls.html"><a href="partial-least-squares-pls.html#wrangling"><i class="fa fa-check"></i><b>5.3.1</b> Wrangling</a></li>
+<li class="chapter" data-level="5.3.2" data-path="partial-least-squares-pls.html"><a href="partial-least-squares-pls.html#sum-of-cross-products"><i class="fa fa-check"></i><b>5.3.2</b> Sum of Cross Products</a></li>
+<li class="chapter" data-level="5.3.3" data-path="partial-least-squares-pls.html"><a href="partial-least-squares-pls.html#pca"><i class="fa fa-check"></i><b>5.3.3</b> PCA</a></li>
+<li class="chapter" data-level="5.3.4" data-path="partial-least-squares-pls.html"><a href="partial-least-squares-pls.html#eigenvalue-1"><i class="fa fa-check"></i><b>5.3.4</b> Eigenvalue</a></li>
+<li class="chapter" data-level="5.3.5" data-path="partial-least-squares-pls.html"><a href="partial-least-squares-pls.html#factor-scores-3"><i class="fa fa-check"></i><b>5.3.5</b> Factor Scores</a></li>
+<li class="chapter" data-level="5.3.6" data-path="partial-least-squares-pls.html"><a href="partial-least-squares-pls.html#latent-scores-1"><i class="fa fa-check"></i><b>5.3.6</b> Latent Scores</a></li>
+</ul></li>
+<li class="chapter" data-level="5.4" data-path="partial-least-squares-pls.html"><a href="partial-least-squares-pls.html#math-walk-through-2"><i class="fa fa-check"></i><b>5.4</b> Math Walk-Through</a></li>
+</ul></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+
 </ul>
 
       </nav>
@@ -181,18 +222,18 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
             <section class="normal" id="section-">
 <div id="correspondence-analysis-ca" class="section level1">
-<h1><span class="header-section-number">2</span> Correspondence Analysis (CA)</h1>
+<h1><span class="header-section-number">Chapter 4</span> Correspondence Analysis (CA)</h1>
 <div id="description-1" class="section level2">
-<h2><span class="header-section-number">2.1</span> Description</h2>
+<h2><span class="header-section-number">4.1</span> Description</h2>
 </div>
 <div id="example-1" class="section level2">
-<h2><span class="header-section-number">2.2</span> Example</h2>
+<h2><span class="header-section-number">4.2</span> Example</h2>
 </div>
 <div id="behind-the-scenes-1" class="section level2">
-<h2><span class="header-section-number">2.3</span> Behind-the-Scenes</h2>
+<h2><span class="header-section-number">4.3</span> Behind-the-Scenes</h2>
 </div>
 <div id="math-walk-through-1" class="section level2">
-<h2><span class="header-section-number">2.4</span> Math Walk-Through</h2>
+<h2><span class="header-section-number">4.4</span> Math Walk-Through</h2>
 
 </div>
 </div>
@@ -201,17 +242,19 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           </div>
         </div>
       </div>
-<a href="principal-component-analysis-pca.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-
+<a href="principal-component-analysis-pca.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="partial-least-squares-pls.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
 <script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
 <script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
 <script>
 gitbook.require(["gitbook"], function(gitbook) {
 gitbook.start({
@@ -219,12 +262,11 @@ gitbook.start({
 "github": false,
 "facebook": true,
 "twitter": true,
-"google": false,
 "linkedin": false,
 "weibo": false,
 "instapaper": false,
 "vk": false,
-"all": ["facebook", "google", "twitter", "linkedin", "weibo", "instapaper"]
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
 },
 "fontsettings": {
 "theme": "white",
@@ -232,10 +274,14 @@ gitbook.start({
 "size": 2
 },
 "edit": {
-"link": "https://github.com/juchiyu/MultivarBook/edit/master/Rmd/02-ca.Rmd",
+"link": "https://https://github.com/juchiyu/MultivarBook/edit/master/Rmd/02-ca.Rmd",
 "text": "Edit"
 },
 "history": {
+"link": null,
+"text": null
+},
+"view": {
 "link": null,
 "text": null
 },

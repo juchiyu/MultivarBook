@@ -26,33 +26,17 @@ The distance from the origin is important in both maps, because squared distance
 
 ## Example
 
-Let's say we are interested in creating unique components from a dataset that contains the length and number of definitions of a list of 20 words.
-
 ### Packages
-
-First, let's load the package `ExPosition` that contains both the data and a function to perform PCA.
-
-```{r}
-library(ExPosition)
-```
-
-### Data
-```{r}
-data(words)            # load words data to the environment
-data <- words$data     # set the words data as data
-data                   # view data
-```
-
-This single table contains 20 rows of words and 2 columns that contain information about the length and number of definitions of each word. 
 
 ### Data Pre-Processing
 ```{r}
-
+data <- data_pca_wine
 ```
 
 ### Descriptive Statistics
 ```{r}
-psych::describe(data) %>% select(n, mean, median, min, max, sd, se, skew, kurtosis)
+psych::describe(data_pca_wine) %>% 
+  select(n, mean, median, min, max, sd, se, skew, kurtosis)
 cor(data)
 ```
 
@@ -67,11 +51,28 @@ model$ExPosition.Data
 
 ### Number of Components
 
+```{r}
+plot_eig(model$ExPosition.Data$eigs)
+```
+
 ### Visualize and Interpret Components
 
 #### Factor Scores
+```{r}
+plot_pairs_all(model$ExPosition.Data$fi)
+```
 
 #### Loadings
+```{r}
+plot_pairs_all(model$ExPosition.Data$fj)
+```
+
+#### Contributions
+```{r}
+plot_contributions_all(model$ExPosition.Data$ci, model$ExPosition.Data$fi)
+
+pair_plot_all_contributions(model$ExPosition.Data$cj, model$ExPosition.Data$fj)
+```
 
 ## Behind-the-Scenes
 

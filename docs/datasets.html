@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Multivariate Cookbook</title>
+  <title>Chapter 2 Datasets | Multivariate Cookbook</title>
   <meta name="description" content="This book provides an introduction of simple and advanced multivariate analysis." />
   <meta name="generator" content="bookdown 0.17 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Multivariate Cookbook" />
+  <meta property="og:title" content="Chapter 2 Datasets | Multivariate Cookbook" />
   <meta property="og:type" content="book" />
   
   
@@ -16,7 +16,7 @@
   
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Multivariate Cookbook" />
+  <meta name="twitter:title" content="Chapter 2 Datasets | Multivariate Cookbook" />
   
   <meta name="twitter:description" content="This book provides an introduction of simple and advanced multivariate analysis." />
   
@@ -31,8 +31,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-
-<link rel="next" href="packages.html"/>
+<link rel="prev" href="packages.html"/>
+<link rel="next" href="principal-component-analysis-pca.html"/>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
@@ -221,131 +221,71 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="header">
-<h1 class="title">Multivariate Cookbook</h1>
-<p class="author"><em>Ju-Chi Yu and Sheila Meldrum</em></p>
-<p class="date"><em>2020-02-04</em></p>
+<div id="datasets" class="section level1">
+<h1><span class="header-section-number">Chapter 2</span> Datasets</h1>
+<div id="wine" class="section level2">
+<h2><span class="header-section-number">2.1</span> Wine</h2>
+<p>This wine data contains 6 wines (rows) that rated on different qualities (columns).</p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb6-1" data-line-number="1"><span class="kw">data</span>(<span class="st">&quot;pca.wine&quot;</span>)</a>
+<a class="sourceLine" id="cb6-2" data-line-number="2">data_pca_wine &lt;-<span class="st"> </span>pca.wine<span class="op">$</span>data</a>
+<a class="sourceLine" id="cb6-3" data-line-number="3">data_pca_wine</a></code></pre></div>
+<pre><code>##    Oak_Type E1_fruity E1_Woody E1_Coffee E2_Red_fruit E2_Roasted E2_Vanillin E2_Woody E3_Fruity
+## W1        1         1        3         2            1          2           3        2         2
+## W2        2         2        2         1            2          1           2        1         2
+## W3        2         2        1         1            2          1           1        1         2
+## W4        2         2        1         1            2          1           1        1         1
+## W5        1         1        3         2            1          2           3        2         1
+## W6        1         1        2         2            1          2           2        2         1
+##    E3_Butter E3_Woody
+## W1         2        2
+## W2         1        1
+## W3         1        1
+## W4         1        1
+## W5         2        2
+## W6         2        2</code></pre>
+<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb8-1" data-line-number="1"><span class="kw">summary</span>(data_pca_wine)</a></code></pre></div>
+<pre><code>##     Oak_Type     E1_fruity      E1_Woody      E1_Coffee    E2_Red_fruit   E2_Roasted 
+##  Min.   :1.0   Min.   :1.0   Min.   :1.00   Min.   :1.0   Min.   :1.0   Min.   :1.0  
+##  1st Qu.:1.0   1st Qu.:1.0   1st Qu.:1.25   1st Qu.:1.0   1st Qu.:1.0   1st Qu.:1.0  
+##  Median :1.5   Median :1.5   Median :2.00   Median :1.5   Median :1.5   Median :1.5  
+##  Mean   :1.5   Mean   :1.5   Mean   :2.00   Mean   :1.5   Mean   :1.5   Mean   :1.5  
+##  3rd Qu.:2.0   3rd Qu.:2.0   3rd Qu.:2.75   3rd Qu.:2.0   3rd Qu.:2.0   3rd Qu.:2.0  
+##  Max.   :2.0   Max.   :2.0   Max.   :3.00   Max.   :2.0   Max.   :2.0   Max.   :2.0  
+##   E2_Vanillin      E2_Woody     E3_Fruity     E3_Butter      E3_Woody  
+##  Min.   :1.00   Min.   :1.0   Min.   :1.0   Min.   :1.0   Min.   :1.0  
+##  1st Qu.:1.25   1st Qu.:1.0   1st Qu.:1.0   1st Qu.:1.0   1st Qu.:1.0  
+##  Median :2.00   Median :1.5   Median :1.5   Median :1.5   Median :1.5  
+##  Mean   :2.00   Mean   :1.5   Mean   :1.5   Mean   :1.5   Mean   :1.5  
+##  3rd Qu.:2.75   3rd Qu.:2.0   3rd Qu.:2.0   3rd Qu.:2.0   3rd Qu.:2.0  
+##  Max.   :3.00   Max.   :2.0   Max.   :2.0   Max.   :2.0   Max.   :2.0</code></pre>
 </div>
-<div id="preface" class="section level1 unnumbered">
-<h1>Preface</h1>
-<p>Multivariate techniques are becoming an increasingly popular analytical tool given the rise of both open and large datasets. This book hopes to provide conceptual and practical knowledge on how to perform these multivariate techniques.</p>
-<div id="what-are-multivariate-analyses" class="section level2 unnumbered">
-<h2>What are Multivariate Analyses?</h2>
-<p>Multivariate analyses are used when there is more than one outcome (or dependent variables; DVs) as opposed to univariate analyses (e.g., ANOVA or regression) that have only one outcome.</p>
-<p>Component-based multivariate analyses are primarily data driven exploratory techniques of the underlying structure (i.e. latent structure) of a multivariate data set. These underlying structures are represented by a mixture of the original variables—called components or factors—which explains the most information about the observations.</p>
-</div>
-<div id="multivariate-vs.univariate-analyses" class="section level2 unnumbered">
-<h2>Multivariate vs. Univariate Analyses</h2>
-<div id="when-to-use-univariate-analyses" class="section level3 unnumbered">
-<h3>When to Use Univariate Analyses?</h3>
-<p>Univariate statistics statistics are most appropriate to use when you have one outcome (or dependent variable) and have planned inferences based on <em>a priori</em> hypotheses.</p>
-</div>
-<div id="when-to-use-multivariate-techniques" class="section level3 unnumbered">
-<h3>When to Use Multivariate Techniques?</h3>
-<ol style="list-style-type: decimal">
-<li><p>Understand the relationship between two or more outcome variables/measurements.</p>
-<p>Note: A Principle Component Analysis (PCA) with two variables would be the same as a pearson correlation (<span class="math inline">\(r\)</span>) if the variables are normalized (i.e., z-scored) first.</p></li>
-<li><p>Exploratory data analysis</p>
-<p>When you don’t have <em>a priori</em> hypotheses about the structure of your data.</p>
-<p>Example: You are using a large archival data set that includes multiple behavioral measurements (i.e., surveys, performance data, etc).</p></li>
-<li><p>Dimension reduction</p>
-<p>Example: Machine learning</p></li>
-<li><p>Identify unique patterns across observations</p>
-<p>Example: Eigen faces (maybe), time series data, functional PCA</p></li>
-</ol>
-</div>
-</div>
-<div id="common-multivariate-analyses" class="section level2 unnumbered">
-<h2>Common Multivariate Analyses</h2>
-<table>
-<thead>
-<tr class="header">
-<th align="left">Type of Data</th>
-<th align="left">No. of Tables</th>
-<th align="left">Analysis</th>
-<th align="left">Results</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td align="left">Quantitative</td>
-<td align="left">1</td>
-<td align="left">PCA</td>
-<td align="left">Factor Scores, Column Loadings</td>
-</tr>
-<tr class="even">
-<td align="left">Quantitative</td>
-<td align="left">2</td>
-<td align="left">PLS</td>
-<td align="left">insert</td>
-</tr>
-<tr class="odd">
-<td align="left">Quantitative</td>
-<td align="left">2</td>
-<td align="left">BADA</td>
-<td align="left">insert</td>
-</tr>
-<tr class="even">
-<td align="left">Quantitative</td>
-<td align="left">2+</td>
-<td align="left">MFA</td>
-<td align="left">insert</td>
-</tr>
-<tr class="odd">
-<td align="left">Quantitative</td>
-<td align="left">2+</td>
-<td align="left">STATIS</td>
-<td align="left">insert</td>
-</tr>
-<tr class="even">
-<td align="left">Qualitative</td>
-<td align="left">1</td>
-<td align="left">CA</td>
-<td align="left">insert</td>
-</tr>
-<tr class="odd">
-<td align="left">Qualitative</td>
-<td align="left">2+</td>
-<td align="left">MCA</td>
-<td align="left">insert</td>
-</tr>
-<tr class="even">
-<td align="left">Qualitative</td>
-<td align="left">2+</td>
-<td align="left">PLS-CA</td>
-<td align="left">insert</td>
-</tr>
-<tr class="odd">
-<td align="left">Mixed</td>
-<td align="left">2+</td>
-<td align="left">Mixed PLS</td>
-<td align="left">insert</td>
-</tr>
-</tbody>
-</table>
-</div>
-<div id="what-will-this-book-cover" class="section level2 unnumbered">
-<h2>What Will this Book Cover?</h2>
-<p>Currently, this book will cover PCA with other multivariate analyses being added over time.</p>
-</div>
-<div id="how-will-this-book-be-covered" class="section level2 unnumbered">
-<h2>How Will this Book be Covered?</h2>
-<p>Each multivariate technique will cover:</p>
-<ol style="list-style-type: decimal">
-<li>A conceptual description</li>
-<li>A practical example of the technique using R and the <code>ExPosition</code> library</li>
-<li>What <code>ExPosition</code> is actually doing behing the scenes using R</li>
-<li>A walk-through of the math</li>
-</ol>
-<p>For the practical example of each technique, we will cover:</p>
-<ol style="list-style-type: decimal">
-<li>Pre-processing of the data</li>
-<li>Using descriptive statistics to describe the data</li>
-<li>Performining the multivariate technique</li>
-<li>Determining the number of components</li>
-<li>Visualizing and interpreting the components</li>
-</ol>
-<p>Hopefully, this format will allow individuals that are new to multivariate techniques to grasp both conceptual and pratical information of each technique while allowing more experienced individuals to use this book as a quick reference.</p>
+<div id="ucla" class="section level2">
+<h2><span class="header-section-number">2.2</span> UCLA</h2>
+<p>This open dataset from UCLA contains 600 individuals (rows) and their some personality measures and scores on standardized tests (7 columns). The personality measures include <code>locus_of_control</code>, <code>self_concept</code>, and <code>motivation</code>. The standardized tests include <code>read</code>, <code>write</code>, <code>math</code>, and <code>science</code>.</p>
+<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb10-1" data-line-number="1">data_ucla &lt;-<span class="st"> </span><span class="kw">read.csv</span>(<span class="st">&quot;https://stats.idre.ucla.edu/stat/data/mmreg.csv&quot;</span>)</a>
+<a class="sourceLine" id="cb10-2" data-line-number="2"><span class="kw">head</span>(data_ucla)</a></code></pre></div>
+<pre><code>##   locus_of_control self_concept motivation read write math science female
+## 1            -0.84        -0.24       1.00 54.8  64.5 44.5    52.6      1
+## 2            -0.38        -0.47       0.67 62.7  43.7 44.7    52.6      1
+## 3             0.89         0.59       0.67 60.6  56.7 70.5    58.0      0
+## 4             0.71         0.28       0.67 62.7  56.7 54.7    58.0      0
+## 5            -0.64         0.03       1.00 41.6  46.3 38.4    36.3      1
+## 6             1.11         0.90       0.33 62.7  64.5 61.4    58.0      1</code></pre>
+<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb12-1" data-line-number="1"><span class="kw">summary</span>(data_ucla)</a></code></pre></div>
+<pre><code>##  locus_of_control    self_concept         motivation          read          write      
+##  Min.   :-2.23000   Min.   :-2.620000   Min.   :0.0000   Min.   :28.3   Min.   :25.50  
+##  1st Qu.:-0.37250   1st Qu.:-0.300000   1st Qu.:0.3300   1st Qu.:44.2   1st Qu.:44.30  
+##  Median : 0.21000   Median : 0.030000   Median :0.6700   Median :52.1   Median :54.10  
+##  Mean   : 0.09653   Mean   : 0.004917   Mean   :0.6608   Mean   :51.9   Mean   :52.38  
+##  3rd Qu.: 0.51000   3rd Qu.: 0.440000   3rd Qu.:1.0000   3rd Qu.:60.1   3rd Qu.:59.90  
+##  Max.   : 1.36000   Max.   : 1.190000   Max.   :1.0000   Max.   :76.0   Max.   :67.10  
+##       math          science          female     
+##  Min.   :31.80   Min.   :26.00   Min.   :0.000  
+##  1st Qu.:44.50   1st Qu.:44.40   1st Qu.:0.000  
+##  Median :51.30   Median :52.60   Median :1.000  
+##  Mean   :51.85   Mean   :51.76   Mean   :0.545  
+##  3rd Qu.:58.38   3rd Qu.:58.65   3rd Qu.:1.000  
+##  Max.   :75.50   Max.   :74.20   Max.   :1.000</code></pre>
 
 </div>
 </div>
@@ -354,8 +294,8 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
           </div>
         </div>
       </div>
-
-<a href="packages.html" class="navigation navigation-next navigation-unique" aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="packages.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="principal-component-analysis-pca.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
@@ -386,7 +326,7 @@ gitbook.start({
 "size": 2
 },
 "edit": {
-"link": "https://https://github.com/juchiyu/MultivarBook/edit/master/Rmd/00-00-index.Rmd",
+"link": "https://https://github.com/juchiyu/MultivarBook/edit/master/Rmd/00-02-datasets.Rmd",
 "text": "Edit"
 },
 "history": {

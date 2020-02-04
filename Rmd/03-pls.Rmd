@@ -1,0 +1,171 @@
+# Partial Least Squares (PLS)
+
+## Description
+
+### What is PLS?
+
+Partial Least Squares (PLS) is used to analyze two tables of quantitative. PLS is essentially "data wrangling" followed by PCA. 
+
+<br>
+Data wrangling can include centering and/or scaling of each column of each dataset and then the cross product of the two datasets. 
+
+$$SCP = X'Y$$
+
+where $SCP$ is the sum of cross product, $X'$ is the transposed matrix of the first dataset, $Y$ is the matrix of the second dataset.
+
+We can then obtain the latent variables by multiplying each dataset by its respective singular value.
+
+$$ L_X = Xu $$
+$$ L_Y = Yv $$
+
+The maximum possible number of latent variables is always the least number of columns of either table.
+
+<br>
+
+## Example
+
+<br>
+
+### Data
+
+Let's use the UCLA dataset.
+
+```{r}
+data <- data_ucla %>%
+  select(locus_of_control:science)
+head(data)
+```
+
+<br>
+
+#### Descriptive Statistics
+```{r}
+summary(data)
+```
+
+<br>
+
+#### Correlation Matrix
+```{r, warning = F}
+correlate(data) %>%
+  rplot(colours = rev(RColorBrewer::brewer.pal(9, "RdBu"))) +
+  theme(axis.text.x = element_text(hjust = 1, angle = 45))
+```
+
+We can see that the personality measures are weakly correlated with each other, while the standardized tests are highly correlated with each other. Also, we can see that Locus of Control is moderately correlated with each of the standardized tests. 
+
+#### Split
+
+Let's split the data into a dataset of personality metrics ($X$) and another dataset of the standardized tests ($Y$).
+
+```{r}
+X <- data %>% 
+  select(locus_of_control, self_concept, motivation) %>% 
+  as.matrix()
+head(X)
+
+Y <- data %>% 
+  select(read, write, math, science) %>% 
+  as.matrix()
+head(Y)
+```
+
+<br>
+
+### Analysis
+
+```{r}
+model_pls <- tepPLS(X, Y, scale1 = TRUE, scale2 = TRUE, graphs = F)
+```
+
+<br>
+
+### Eigenvalue
+
+```{r}
+eig <- model_pls$TExPosition.Data$pdq$Dv^2
+plot_eig(eig)
+```
+
+<br>
+
+### Factor Scores
+```{r}
+model_pls$TExPosition.Data$fi
+plot_pairs_all(model_pls$TExPosition.Data$fi)
+
+model_pls$TExPosition.Data$fj
+plot_pairs_all(model_pls$TExPosition.Data$fj)
+```
+
+<br>
+
+### Latent Scores
+```{r}
+model_pls$TExPosition.Data$lx %>% head()
+model_pls$TExPosition.Data$ly %>% head()
+
+#plot_all_latents(model_pls$TExPosition.Data$lx, model_pls$TExPosition.Data$ly)
+```
+
+## Behind-the-Scenes
+
+<br>
+
+### Wrangling
+Let's center and scale (i.e., z-score) each column in each dataset.
+
+```{r}
+X <- apply(X, 2, scale)
+Y <- apply(Y, 2, scale)
+
+summary(X)
+summary(Y)
+```
+
+<br>
+
+### Sum of Cross Products
+```{r}
+scp <- crossprod(X, Y) # this is slightly faster than t(X) %*% Y
+scp
+```
+
+<br>
+
+### PCA
+```{r}
+model_svd <- svd(scp)
+d <- model_svd$d
+u <- model_svd$u
+v <- model_svd$v
+eig <- d^2
+```
+
+<br>
+
+### Eigenvalue
+```{r}
+eig
+plot_eig(eig)
+```
+
+<br>
+
+### Factor Scores
+```{r}
+v %*% diag(d)
+u %*% diag(d)
+```
+
+<br>
+
+### Latent Scores
+```{r}
+X %*% u %>% head()
+Y %*% v %>% head()
+```
+
+<br>
+
+## Math Walk-Through

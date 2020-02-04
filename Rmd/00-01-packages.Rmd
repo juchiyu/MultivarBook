@@ -1,0 +1,107 @@
+# Packages
+
+Let's first load some packages that we will use.
+
+```{r}
+library(tidyverse)      # data wrangling, visualization
+library(ExPosition)     # package to perform one table analyses (e.g., PCA and CCA)
+library(TExPosition)    # package to perform two talbe analyses (e.g., PLS and PLSCA)
+library(furrr)
+library(ggpubr)
+library(tidytext)
+library(corrr)
+```
+
+## Functions
+
+### plot_eig()
+```{r}
+plot_eig <- function(eig) {
+  data <- tibble(eig) %>%
+    mutate(n_components = row_number())
+  ggplot(data, aes(n_components, eig)) +
+    geom_line() +
+    geom_point() +
+    labs(x = "No. of Components",
+         y = "Eigenvalue") +
+    theme_classic() +
+    scale_x_continuous(breaks = seq(1, nrow(data), 1))
+}
+```
+
+### plot_pairs_all()
+```{r}
+plot_pairs_all <- function(data) {
+  data <- as.data.frame(data)
+  n_comp <- ncol(data)
+  
+  data_fig <- tibble(x = 1:n_comp) %>%
+    mutate(y = list(1:n_comp)) %>%
+    unnest() %>%
+    mutate(pair = future_map2_chr(x, y, function(x, y) paste0(sort(c(x, y)), collapse = "-")),
+           duplicate = duplicated(pair)) %>%
+    filter(x != y,
+           duplicate == FALSE) %>%
+    select(-pair, -duplicate) %>%
+    mutate(data_x = future_map(x, function(x) data[,x])) %>%
+    unnest() %>%
+    mutate(data_y = future_map(y, function(x) data[,x])) %>%
+    unnest()
+  
+  ggplot(data_fig, aes(data_x, data_y)) +
+    geom_hline(yintercept = 0) +
+    geom_vline(xintercept = 0) +
+    geom_point() +
+    theme_minimal() +
+    labs(x = NULL,
+         y = NULL) +
+    #coord_fixed() +
+    facet_grid(y ~ x, switch = "both", scales = "free")
+}
+```
+
+### plot_contributions_all()
+```{r}
+plot_contributions_all <- function(c, f) {
+  contributions_signed <- sign(f) * c %>%
+    as.data.frame() 
+  
+  max <- abs(c) %>% max()
+  
+  rnames <- row.names(contributions_signed)
+  contributions_signed <- contributions_signed %>%
+    as_tibble() %>%
+    mutate(var_1 = rnames) %>%
+    gather(., "var_2", "value", -var_1) %>%
+    mutate(var_1 = as.factor(var_1),
+           var_2 = as.factor(var_2)) %>%
+    arrange(value, var_2) %>%
+    mutate(idx = row_number())
+  ggplot(contributions_signed, aes(var_1, value, fill = value)) +
+    geom_col(show.legend = FALSE) +
+    facet_wrap( ~ var_2, scales = "free") +
+    labs(x = NULL,
+         y = NULL) +
+    theme_minimal() +
+    scale_fill_distiller(palette = "RdBu", limits = c(-max, max))
+}
+```
+
+### plot_latents_all()
+```{r}
+plot_latents_all <- function(data_x, data_y) {
+  data_x <- model_pls$TExPosition.Data$lx
+  data_y <- model_pls$TExPosition.Data$ly
+  data_x <- as.data.frame(data_x)
+  data_y <- as.data.frame(data_y)
+  data <- tibble(n_components = 1:nrow(x)) %>%
+    mutate(data_x = future_map(n_components, function(x) data_x[, x]))
+  
+  fig <- ggplot(data, aes(x, y)) +
+    geom_point() +
+    theme_classic() +
+    facet_wrap(~ n_components)
+  return(fig)
+    
+}
+```

@@ -1,0 +1,22 @@
+# Datasets
+
+## Wine
+
+This wine data contains 6 wines (rows) that rated on different qualities (columns).
+
+```{r}
+data("pca.wine")
+data_pca_wine <- pca.wine$data
+data_pca_wine
+summary(data_pca_wine)
+```
+
+## UCLA
+
+This open dataset from UCLA contains 600 individuals (rows) and their some personality measures and scores on standardized tests (7 columns). The personality measures include `locus_of_control`, `self_concept`, and `motivation`. The standardized tests include `read`, `write`, `math`, and `science`.
+
+```{r}
+data_ucla <- read.csv("https://stats.idre.ucla.edu/stat/data/mmreg.csv")
+head(data_ucla)
+summary(data_ucla)
+```
